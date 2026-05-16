@@ -1,0 +1,302 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Satellite TLE Data",
+    "description": "This API provides access to Two-Line Element (TLE) data for various satellites. It allows users to retrieve the latest orbital information for tracking satellites in real-time.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://tle.ivanstanojevic.me/api/tle/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://tle.ivanstanojevic.me/api",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/tle/": {
+      "get": {
+        "summary": "Get TLE data for satellites",
+        "description": "Retrieve a paginated list of Two-Line Element (TLE) data for satellites. Supports searching, sorting, and pagination.",
+        "operationId": "getTLEList",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Search query to filter satellites by name or ID. Use '*' for all satellites.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "*"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Field to sort results by",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "popularity",
+                "name",
+                "date",
+                "satelliteId"
+              ],
+              "default": "popularity"
+            }
+          },
+          {
+            "name": "sort-dir",
+            "in": "query",
+            "description": "Sort direction",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "desc"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "page-size",
+            "in": "query",
+            "description": "Number of items per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with TLE data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TLECollection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/tle/{satelliteId}": {
+      "get": {
+        "summary": "Get TLE data for a specific satellite",
+        "description": "Retrieve Two-Line Element (TLE) data for a specific satellite by its NORAD catalog ID",
+        "operationId": "getTLEBySatelliteId",
+        "parameters": [
+          {
+            "name": "satelliteId",
+            "in": "path",
+            "description": "NORAD catalog ID of the satellite",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 25544
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with TLE data for the specified satellite",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TLE"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Satellite not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "TLE": {
+        "type": "object",
+        "properties": {
+          "@id": {
+            "type": "string",
+            "format": "uri",
+            "description": "Unique identifier URI for the TLE resource",
+            "example": "https://tle.ivanstanojevic.me/api/tle/25544"
+          },
+          "@type": {
+            "type": "string",
+            "description": "Resource type",
+            "example": "Tle"
+          },
+          "satelliteId": {
+            "type": "integer",
+            "description": "NORAD catalog ID of the satellite",
+            "example": 25544
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the satellite",
+            "example": "ISS (ZARYA)"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date and time of the TLE data",
+            "example": "2026-02-15T13:40:14+00:00"
+          },
+          "line1": {
+            "type": "string",
+            "description": "First line of the Two-Line Element set",
+            "example": "1 25544U 98067A 26046.56961129 .00012237 00000+0 23255-3 0 9991"
+          },
+          "line2": {
+            "type": "string",
+            "description": "Second line of the Two-Line Element set",
+            "example": "2 25544 51.6318 181.6982 0010992 101.7612 258.4610 15.48625638552905"
+          }
+        },
+        "required": [
+          "satelliteId",
+          "name",
+          "date",
+          "line1",
+          "line2"
+        ]
+      },
+      "TLECollection": {
+        "type": "object",
+        "properties": {
+          "@context": {
+            "type": "string",
+            "format": "uri",
+            "description": "JSON-LD context",
+            "example": "https://www.w3.org/ns/hydra/context.jsonld"
+          },
+          "@id": {
+            "type": "string",
+            "format": "uri",
+            "description": "Identifier for the collection",
+            "example": "https://tle.ivanstanojevic.me/api/tle/"
+          },
+          "@type": {
+            "type": "string",
+            "description": "Collection type",
+            "example": "Tle[]"
+          },
+          "totalItems": {
+            "type": "integer",
+            "description": "Total number of TLE entries available",
+            "example": 23381
+          },
+          "member": {
+            "type": "array",
+            "description": "Array of TLE objects",
+            "items": {
+              "$ref": "#/components/schemas/TLE"
+            }
+          },
+          "parameters": {
+            "type": "object",
+            "description": "Query parameters used for this request",
+            "properties": {
+              "search": {
+                "type": "string",
+                "example": "*"
+              },
+              "sort": {
+                "type": "string",
+                "example": "popularity"
+              },
+              "sort-dir": {
+                "type": "string",
+                "example": "desc"
+              },
+              "page": {
+                "type": "integer",
+                "example": 1
+              },
+              "page-size": {
+                "type": "integer",
+                "example": 20
+              }
+            }
+          },
+          "view": {
+            "type": "object",
+            "description": "Pagination view information",
+            "properties": {
+              "@id": {
+                "type": "string",
+                "format": "uri",
+                "description": "Current page URI",
+                "example": "https://tle.ivanstanojevic.me/api/tle/?page=1"
+              },
+              "@type": {
+                "type": "string",
+                "example": "PartialCollectionView"
+              },
+              "first": {
+                "type": "string",
+                "format": "uri",
+                "description": "URI of the first page",
+                "example": "https://tle.ivanstanojevic.me/api/tle/?page=1"
+              },
+              "next": {
+                "type": "string",
+                "format": "uri",
+                "description": "URI of the next page",
+                "example": "https://tle.ivanstanojevic.me/api/tle/?page=2"
+              },
+              "last": {
+                "type": "string",
+                "format": "uri",
+                "description": "URI of the last page",
+                "example": "https://tle.ivanstanojevic.me/api/tle/?page=1170"
+              },
+              "previous": {
+                "type": "string",
+                "format": "uri",
+                "description": "URI of the previous page (if applicable)"
+              }
+            }
+          }
+        },
+        "required": [
+          "totalItems",
+          "member"
+        ]
+      }
+    }
+  }
+}

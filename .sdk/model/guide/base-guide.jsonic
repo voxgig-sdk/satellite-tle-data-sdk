@@ -1,0 +1,18 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 1
+  metrics: count: path: 2
+  metrics: count: method: 2
+
+  entity: tle: {
+    path: "/tle/": {
+      op: list: method: *GET
+    }
+    path: "/tle/{satelliteId}": {
+      rename: param: "satelliteId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+}
