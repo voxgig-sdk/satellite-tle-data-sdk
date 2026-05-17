@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/satellite-tle-data-sdk/core"
+	"github.com/voxgig-sdk/satellite-tle-data-sdk/go/core"
 )
 
 type BaseFeature struct {

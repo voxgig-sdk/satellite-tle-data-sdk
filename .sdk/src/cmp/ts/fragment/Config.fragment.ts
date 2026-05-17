@@ -29,7 +29,7 @@ class Config {
 
 
   options = {
-    base: 'https://tle.ivanstanojevic.me/api',
+    base: '$$main.kit.info.servers.0.url$$',
 
     'AUTHBLOCK'headers: 'HEADERS',
 

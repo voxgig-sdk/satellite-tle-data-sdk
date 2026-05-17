@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/satellite-tle-data-sdk"
-	"github.com/voxgig-sdk/satellite-tle-data-sdk/core"
+	sdk "github.com/voxgig-sdk/satellite-tle-data-sdk/go"
+	"github.com/voxgig-sdk/satellite-tle-data-sdk/go/core"
 )
 
 func TestTleDirect(t *testing.T) {
