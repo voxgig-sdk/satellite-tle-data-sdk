@@ -102,7 +102,6 @@ def _tle_basic_setup(extra):
         "SATELLITETLEDATA_TEST_TLE_ENTID": idmap,
         "SATELLITETLEDATA_TEST_LIVE": "FALSE",
         "SATELLITETLEDATA_TEST_EXPLAIN": "FALSE",
-        "SATELLITETLEDATA_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +112,6 @@ def _tle_basic_setup(extra):
     if env.get("SATELLITETLEDATA_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("SATELLITETLEDATA_APIKEY"),
             },
             extra or {},
         ])

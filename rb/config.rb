@@ -15,9 +15,6 @@ module SatelliteTleDataConfig
       },
       "options" => {
         "base" => "https://tle.ivanstanojevic.me/api",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },

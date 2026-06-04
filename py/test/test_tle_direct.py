@@ -106,14 +106,12 @@ def _tle_direct_setup(mockres):
     env = runner.env_override({
         "SATELLITETLEDATA_TEST_TLE_ENTID": {},
         "SATELLITETLEDATA_TEST_LIVE": "FALSE",
-        "SATELLITETLEDATA_APIKEY": "NONE",
     })
 
     live = env.get("SATELLITETLEDATA_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("SATELLITETLEDATA_APIKEY"),
         }
         client = SatelliteTleDataSDK(merged_opts)
         return {

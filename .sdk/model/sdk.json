@@ -16,7 +16,15 @@
           }
         ],
         "title": "Satellite TLE Data",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Fetch Two-Line Element (TLE) orbital data for thousands of satellites, including the ISS and Earth-observation missions",
+        "homepage": "https://tle.ivanstanojevic.me/",
+        "docs_url": "https://tle.ivanstanojevic.me/",
+        "about_md": "The Satellite TLE Data API is a free, public service run by Ivan Stanojevic that exposes [Two-Line Element](https://en.wikipedia.org/wiki/Two-line_element_set) sets for nearly 25,000 satellites tracked in Earth orbit. TLEs are the standard encoding used to compute satellite position and velocity over time, suitable for orbital propagators such as SGP4.\n\nWhat you get from the API:\n\n- A paginated list of TLE records at `/api/tle/` with `satelliteId`, `name`, `date`, `line1`, and `line2`\n- Individual satellite lookup at `/api/tle/{satelliteId}` (e.g. `25544` for the ISS)\n- Search and sort via `search`, `sort`, `sort-dir`, `page`, and `page-size` query parameters\n- Hydra/JSON-LD response envelope with `totalItems`, `member`, and pagination `view`\n\nThe service is open and does not require authentication. CORS is enabled, so the API can be called directly from browser code. No published rate limits or SLA are documented.",
+        "entity_desc": {
+          "tle": "A Two-Line Element record for a single tracked satellite, with `satelliteId`, `name`, `date`, `line1`, and `line2`; available as a collection at `/api/tle/` and individually at `/api/tle/{satelliteId}`."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -24,7 +32,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "tle": {
