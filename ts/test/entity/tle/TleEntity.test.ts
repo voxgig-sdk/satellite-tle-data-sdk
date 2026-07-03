@@ -120,6 +120,7 @@ function basicSetup(extra?: any) {
     'SATELLITE_TLE_DATA_TEST_TLE_ENTID': idmap,
     'SATELLITE_TLE_DATA_TEST_LIVE': 'FALSE',
     'SATELLITE_TLE_DATA_TEST_EXPLAIN': 'FALSE',
+    'SATELLITE_TLE_DATA_APIKEY': 'NONE',
   })
 
   idmap = env['SATELLITE_TLE_DATA_TEST_TLE_ENTID']
@@ -129,6 +130,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new SatelliteTleDataSDK(merge([
       {
+        apikey: env.SATELLITE_TLE_DATA_APIKEY,
       },
       extra
     ]))

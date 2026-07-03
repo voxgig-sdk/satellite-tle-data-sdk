@@ -1,21 +1,8 @@
 # SatelliteTleData SDK
 
-Fetch Two-Line Element (TLE) orbital data for thousands of satellites, including the ISS and Earth-observation missions
+Satellite TLE Data client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Satellite TLE Data
-
-The Satellite TLE Data API is a free, public service run by Ivan Stanojevic that exposes [Two-Line Element](https://en.wikipedia.org/wiki/Two-line_element_set) sets for nearly 25,000 satellites tracked in Earth orbit. TLEs are the standard encoding used to compute satellite position and velocity over time, suitable for orbital propagators such as SGP4.
-
-What you get from the API:
-
-- A paginated list of TLE records at `/api/tle/` with `satelliteId`, `name`, `date`, `line1`, and `line2`
-- Individual satellite lookup at `/api/tle/{satelliteId}` (e.g. `25544` for the ISS)
-- Search and sort via `search`, `sort`, `sort-dir`, `page`, and `page-size` query parameters
-- Hydra/JSON-LD response envelope with `totalItems`, `member`, and pagination `view`
-
-The service is open and does not require authentication. CORS is enabled, so the API can be called directly from browser code. No published rate limits or SLA are documented.
 
 ## Try it
 
@@ -49,29 +36,31 @@ gem install satellite-tle-data-sdk
 luarocks install satellite-tle-data-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { SatelliteTleDataSDK } from 'satellite-tle-data'
 
-const client = new SatelliteTleDataSDK({})
+const client = new SatelliteTleDataSDK({
+  apikey: process.env.SATELLITE-TLE-DATA_APIKEY,
+})
 
 // List all tles
 const tles = await client.Tle().list()
+console.log(tles.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -101,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Tle** | A Two-Line Element record for a single tracked satellite, with `satelliteId`, `name`, `date`, `line1`, and `line2`; available as a collection at `/api/tle/` and individually at `/api/tle/{satelliteId}`. | `/tle/` |
+| **Tle** |  | `/tle/` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -111,17 +100,20 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from satellitetledata_sdk import SatelliteTleDataSDK
 
-client = SatelliteTleDataSDK({})
+client = SatelliteTleDataSDK({
+    "apikey": os.environ.get("SATELLITE-TLE-DATA_APIKEY"),
+})
 
 # List all tles
-tles, err = client.Tle(None).list(None, None)
+tles, err = client.Tle().list()
+print(tles)
 
 # Load a specific tle
-tle, err = client.Tle(None).load(
-    {"id": "example_id"}, None
-)
+tle, err = client.Tle().load({"id": "example_id"})
+print(tle)
 ```
 
 ### PHP
@@ -130,15 +122,17 @@ tle, err = client.Tle(None).load(
 <?php
 require_once 'satellitetledata_sdk.php';
 
-$client = new SatelliteTleDataSDK([]);
+$client = new SatelliteTleDataSDK([
+    "apikey" => getenv("SATELLITE-TLE-DATA_APIKEY"),
+]);
 
 // List all tles
-[$tles, $err] = $client->Tle(null)->list(null, null);
+[$tles, $err] = $client->Tle()->list();
+print_r($tles);
 
 // Load a specific tle
-[$tle, $err] = $client->Tle(null)->load(
-    ["id" => "example_id"], null
-);
+[$tle, $err] = $client->Tle()->load(["id" => "example_id"]);
+print_r($tle);
 ```
 
 ### Golang
@@ -146,10 +140,13 @@ $client = new SatelliteTleDataSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/satellite-tle-data-sdk/go"
 
-client := sdk.NewSatelliteTleDataSDK(map[string]any{})
+client := sdk.NewSatelliteTleDataSDK(map[string]any{
+    "apikey": os.Getenv("SATELLITE-TLE-DATA_APIKEY"),
+})
 
 // List all tles
 tles, err := client.Tle(nil).List(nil, nil)
+fmt.Println(tles)
 ```
 
 ### Ruby
@@ -157,15 +154,17 @@ tles, err := client.Tle(nil).List(nil, nil)
 ```ruby
 require_relative "SatelliteTleData_sdk"
 
-client = SatelliteTleDataSDK.new({})
+client = SatelliteTleDataSDK.new({
+  "apikey" => ENV["SATELLITE-TLE-DATA_APIKEY"],
+})
 
 # List all tles
-tles, err = client.Tle(nil).list(nil, nil)
+tles, err = client.Tle().list
+puts tles
 
 # Load a specific tle
-tle, err = client.Tle(nil).load(
-  { "id" => "example_id" }, nil
-)
+tle, err = client.Tle().load({ "id" => "example_id" })
+puts tle
 ```
 
 ### Lua
@@ -173,15 +172,17 @@ tle, err = client.Tle(nil).load(
 ```lua
 local sdk = require("satellite-tle-data_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("SATELLITE-TLE-DATA_APIKEY"),
+})
 
 -- List all tles
-local tles, err = client:Tle(nil):list(nil, nil)
+local tles, err = client:Tle():list()
+print(tles)
 
 -- Load a specific tle
-local tle, err = client:Tle(nil):load(
-  { id = "example_id" }, nil
-)
+local tle, err = client:Tle():load({ id = "example_id" })
+print(tle)
 ```
 
 ## Unit testing in offline mode
@@ -200,25 +201,21 @@ const result = await client.Tle().load({ id: 'test01' })
 ### Python
 
 ```python
-client = SatelliteTleDataSDK.test(None, None)
-result, err = client.Tle(None).load(
-    {"id": "test01"}, None
-)
+client = SatelliteTleDataSDK.test()
+result, err = client.Tle().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = SatelliteTleDataSDK::test(null, null);
-[$result, $err] = $client->Tle(null)->load(
-    ["id" => "test01"], null
-);
+$client = SatelliteTleDataSDK::test();
+[$result, $err] = $client->Tle()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Tle(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -227,19 +224,15 @@ result, err := client.Tle(nil).Load(
 ### Ruby
 
 ```ruby
-client = SatelliteTleDataSDK.test(nil, nil)
-result, err = client.Tle(nil).load(
-  { "id" => "test01" }, nil
-)
+client = SatelliteTleDataSDK.test
+result, err = client.Tle().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Tle(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Tle():load({ id = "test01" })
 ```
 
 ## How it works
@@ -343,10 +336,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Satellite TLE Data
-
-- Upstream: [https://tle.ivanstanojevic.me/](https://tle.ivanstanojevic.me/)
 
 ---
 

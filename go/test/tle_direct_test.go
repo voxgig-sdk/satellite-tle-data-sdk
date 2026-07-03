@@ -175,12 +175,14 @@ func tleDirectSetup(mockres any) *tleDirectSetupResult {
 	env := envOverride(map[string]any{
 		"SATELLITETLEDATA_TEST_TLE_ENTID": map[string]any{},
 		"SATELLITETLEDATA_TEST_LIVE":    "FALSE",
+		"SATELLITETLEDATA_APIKEY":       "NONE",
 	})
 
 	live := env["SATELLITETLEDATA_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["SATELLITETLEDATA_APIKEY"],
 		}
 		client := sdk.NewSatelliteTleDataSDK(mergedOpts)
 

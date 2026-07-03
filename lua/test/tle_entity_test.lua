@@ -102,6 +102,7 @@ function tle_basic_setup(extra)
     ["SATELLITETLEDATA_TEST_TLE_ENTID"] = idmap,
     ["SATELLITETLEDATA_TEST_LIVE"] = "FALSE",
     ["SATELLITETLEDATA_TEST_EXPLAIN"] = "FALSE",
+    ["SATELLITETLEDATA_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -113,6 +114,7 @@ function tle_basic_setup(extra)
   if env["SATELLITETLEDATA_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["SATELLITETLEDATA_APIKEY"],
       },
       extra or {},
     })

@@ -135,6 +135,7 @@ func tleBasicSetup(extra map[string]any) *entityTestSetup {
 		"SATELLITETLEDATA_TEST_TLE_ENTID": idmap,
 		"SATELLITETLEDATA_TEST_LIVE":      "FALSE",
 		"SATELLITETLEDATA_TEST_EXPLAIN":   "FALSE",
+		"SATELLITETLEDATA_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["SATELLITETLEDATA_TEST_TLE_ENTID"])
@@ -145,6 +146,7 @@ func tleBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["SATELLITETLEDATA_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["SATELLITETLEDATA_APIKEY"],
 			},
 			extra,
 		})

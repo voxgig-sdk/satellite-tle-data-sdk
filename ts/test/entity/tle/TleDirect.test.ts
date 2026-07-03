@@ -117,12 +117,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'SATELLITETLEDATA_TEST_TLE_ENTID': {},
     'SATELLITETLEDATA_TEST_LIVE': 'FALSE',
+    'SATELLITETLEDATA_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.SATELLITETLEDATA_TEST_LIVE
 
   if (live) {
     const client = new SatelliteTleDataSDK({
+      apikey: env.SATELLITETLEDATA_APIKEY,
     })
 
     let idmap: any = env['SATELLITETLEDATA_TEST_TLE_ENTID']
