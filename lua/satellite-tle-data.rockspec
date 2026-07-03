@@ -8,12 +8,14 @@ source = {
   dir = "satellite-tle-data-sdk/lua"
 }
 description = {
-  summary = "SatelliteTleData SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Satellite TLE Data public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/satellite-tle-data-sdk",
+  issues_url = "https://github.com/voxgig-sdk/satellite-tle-data-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "satellite-tle-data" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

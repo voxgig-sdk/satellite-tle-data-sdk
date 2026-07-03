@@ -10,7 +10,7 @@ The Python SDK for the SatelliteTleData API — an entity-oriented client follow
 
 ## Install
 ```bash
-pip install satellite-tle-data-sdk
+pip install voxgig-sdk-satellite-tle-data
 ```
 
 Or install from source:

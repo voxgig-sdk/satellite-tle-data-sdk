@@ -10,7 +10,7 @@ The PHP SDK for the SatelliteTleData API — an entity-oriented client using PHP
 
 ## Install
 ```bash
-composer require voxgig/satellite-tle-data-sdk
+composer require voxgig-sdk/satellite-tle-data
 ```
 
 

@@ -10,7 +10,7 @@ The Lua SDK for the SatelliteTleData API — an entity-oriented client using Lua
 
 ## Install
 ```bash
-luarocks install satellite-tle-data-sdk
+luarocks install voxgig-sdk-satellite-tle-data
 ```
 
 If the module is not yet published, add the source directory to

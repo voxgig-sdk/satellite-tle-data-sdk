@@ -10,7 +10,7 @@ The TypeScript SDK for the SatelliteTleData API — a type-safe, entity-oriented
 
 ## Install
 ```bash
-npm install satellite-tle-data
+npm install @voxgig-sdk/satellite-tle-data
 ```
 ## Tutorial: your first API call
 

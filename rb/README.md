@@ -10,13 +10,13 @@ The Ruby SDK for the SatelliteTleData API — an entity-oriented client using id
 
 ## Install
 ```bash
-gem install satellite-tle-data-sdk
+gem install voxgig-sdk-satellite-tle-data
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "satellite-tle-data-sdk"
+gem "voxgig-sdk-satellite-tle-data"
 ```
 
 Then run:
