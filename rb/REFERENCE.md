@@ -86,7 +86,7 @@ same parameters as `direct()`. Raises on error.
 ## TleEntity
 
 ```ruby
-tle = client.tle
+tle = client.Tle
 ```
 
 ### Fields
@@ -108,7 +108,7 @@ tle = client.tle
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.tle.list(nil)
+results = client.Tle.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -116,7 +116,7 @@ results = client.tle.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.tle.load({ "id" => "tle_id" })
+result = client.Tle.load({ "id" => "tle_id" })
 ```
 
 ### Common Methods

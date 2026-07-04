@@ -233,10 +233,10 @@ class SatelliteTleDataSDK
 
     private $_tle = null;
 
-    // Idiomatic facade: $client->tle()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Tle() (PHP method
-    // names are case-insensitive).
-    public function tle($data = null)
+    // Canonical facade: $client->Tle()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->tle()
+    // resolves here too.
+    public function Tle($data = null)
     {
         require_once __DIR__ . '/entity/tle_entity.php';
         if ($data === null) {

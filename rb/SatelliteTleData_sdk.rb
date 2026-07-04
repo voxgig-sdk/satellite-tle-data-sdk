@@ -208,13 +208,7 @@ class SatelliteTleDataSDK
   end
 
 
-  # Idiomatic facade: client.tle.list / client.tle.load({ "id" => ... })
-  def tle
-    require_relative 'entity/tle_entity'
-    @tle ||= TleEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.tle instead.
+  # Canonical facade: client.Tle.list / client.Tle.load({ "id" => ... })
   def Tle(data = nil)
     require_relative 'entity/tle_entity'
     TleEntity.new(self, data)

@@ -28,16 +28,14 @@ require_relative "SatelliteTleData_sdk"
 client = SatelliteTleDataSDK.new
 ```
 
-### 2. List tles
+### 2. List tle records
 
 ```ruby
 begin
-  result = client.tle.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Tle records — iterate directly.
+  tles = client.Tle.list
+  tles.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,8 +46,9 @@ end
 
 ```ruby
 begin
-  result = client.tle.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Tle record (raises on error).
+  tle = client.Tle.load({ "id" => "example_id" })
+  puts tle
 rescue => err
   warn "load failed: #{err}"
 end
@@ -96,13 +95,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = SatelliteTleDataSDK.test
+client = SatelliteTleDataSDK.test({
+  "entity" => { "tle" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.tle.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+tle = client.Tle.load({ "id" => "test01" })
+puts tle
 ```
 
 ### Use a custom fetch function
@@ -240,7 +243,7 @@ API path: `/tle/`
 
 ### Tle
 
-Create an instance: `const tle = client.tle`
+Create an instance: `tle = client.Tle`
 
 #### Operations
 
@@ -263,14 +266,16 @@ Create an instance: `const tle = client.tle`
 
 #### Example: Load
 
-```ts
-const tle = await client.tle.load({ id: 'tle_id' })
+```ruby
+# load returns the bare Tle record (raises on error).
+tle = client.Tle.load({ "id" => "tle_id" })
 ```
 
 #### Example: List
 
-```ts
-const tles = await client.tle.list()
+```ruby
+# list returns an Array of Tle records (raises on error).
+tles = client.Tle.list
 ```
 
 
@@ -345,7 +350,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-tle = client.tle
+tle = client.Tle
 tle.load({ "id" => "example_id" })
 
 # tle.data_get now returns the loaded tle data

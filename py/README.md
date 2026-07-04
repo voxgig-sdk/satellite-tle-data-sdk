@@ -31,24 +31,28 @@ from satellitetledata_sdk import SatelliteTleDataSDK
 client = SatelliteTleDataSDK()
 ```
 
-### 2. List tles
+### 2. List tle records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.tle.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    tles = client.Tle().list({})
+    for tle in tles:
+        print(tle)
 except Exception as err:
     print(f"list failed: {err}")
 ```
 
 ### 3. Load a tle
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.tle.load({"id": "example_id"})
-    print(result)
+    tle = client.Tle().load({"id": "example_id"})
+    print(tle)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -96,8 +100,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = SatelliteTleDataSDK.test()
 
-result = client.tle.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+tle = client.Tle().load({"id": "test01"})
+# tle contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -236,7 +241,7 @@ API path: `/tle/`
 
 ### Tle
 
-Create an instance: `const tle = client.tle`
+Create an instance: `tle = client.Tle()`
 
 #### Operations
 
@@ -259,14 +264,14 @@ Create an instance: `const tle = client.tle`
 
 #### Example: Load
 
-```ts
-const tle = await client.tle.load({ id: 'tle_id' })
+```python
+tle = client.Tle().load({"id": "tle_id"})
 ```
 
 #### Example: List
 
-```ts
-const tles = await client.tle.list()
+```python
+tles = client.Tle().list({})
 ```
 
 
@@ -340,7 +345,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-tle = client.tle
+tle = client.Tle()
 tle.load({"id": "example_id"})
 
 # tle.data_get() now returns the loaded tle data

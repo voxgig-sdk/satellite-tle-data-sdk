@@ -29,18 +29,16 @@ require_once 'satellitetledata_sdk.php';
 $client = new SatelliteTleDataSDK();
 ```
 
-### 2. List tles
+### 2. List tle records
 
 ```php
 try {
-    $result = $client->tle()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Tle records — iterate directly.
+    $tles = $client->Tle()->list();
+    foreach ($tles as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -49,9 +47,10 @@ try {
 
 ```php
 try {
-    $result = $client->tle()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Tle record (throws on error).
+    $tle = $client->Tle()->load(["id" => "example_id"]);
+    print_r($tle);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -97,13 +96,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = SatelliteTleDataSDK::test();
+$client = SatelliteTleDataSDK::test([
+    "entity" => ["tle" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->tle()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$tle = $client->Tle()->load(["id" => "test01"]);
+print_r($tle);
 ```
 
 ### Use a custom fetch function
@@ -245,7 +248,7 @@ API path: `/tle/`
 
 ### Tle
 
-Create an instance: `const tle = client.tle`
+Create an instance: `$tle = $client->Tle();`
 
 #### Operations
 
@@ -268,14 +271,16 @@ Create an instance: `const tle = client.tle`
 
 #### Example: Load
 
-```ts
-const tle = await client.tle.load({ id: 'tle_id' })
+```php
+// load() returns the bare Tle record (throws on error).
+$tle = $client->Tle()->load(["id" => "tle_id"]);
 ```
 
 #### Example: List
 
-```ts
-const tles = await client.tle.list()
+```php
+// list() returns an array of Tle records (throws on error).
+$tles = $client->Tle()->list();
 ```
 
 
@@ -350,7 +355,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$tle = $client->tle();
+$tle = $client->Tle();
 $tle->load(["id" => "example_id"]);
 
 // $tle->dataGet() now returns the loaded tle data

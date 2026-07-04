@@ -204,14 +204,7 @@ class SatelliteTleDataSDK {
 
 
 
-  _tle?: TleEntity
-
-  // Idiomatic facade: `client.tle.list()` / `client.tle.load({ id })`.
-  get tle(): TleEntity {
-    return (this._tle ??= new TleEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.tle` instead. */
+  // Entity access: `client.Tle().list()` / `client.Tle().load({ id })`.
   Tle(data?: any) {
     const self = this
     return new TleEntity(self,data)

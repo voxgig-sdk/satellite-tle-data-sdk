@@ -109,7 +109,7 @@ Alias for `SatelliteTleDataSDK.test()`.
 ## TleEntity
 
 ```ts
-const tle = client.tle
+const tle = client.Tle()
 ```
 
 ### Fields
@@ -131,7 +131,7 @@ const tle = client.tle
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.tle.list()
+const results = await client.Tle().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -139,7 +139,7 @@ const results = await client.tle.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.tle.load({ id: 'tle_id' })
+const result = await client.Tle().load({ id: 'tle_id' })
 ```
 
 ### Common Methods

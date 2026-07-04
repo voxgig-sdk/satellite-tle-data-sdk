@@ -85,7 +85,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## TleEntity
 
 ```php
-$tle = $client->tle();
+$tle = $client->Tle();
 ```
 
 ### Fields
@@ -107,7 +107,7 @@ $tle = $client->tle();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->tle()->list([]);
+$results = $client->Tle()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -115,7 +115,7 @@ $results = $client->tle()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->tle()->load(["id" => "tle_id"]);
+$result = $client->Tle()->load(["id" => "tle_id"]);
 ```
 
 ### Common Methods

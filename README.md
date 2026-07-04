@@ -26,9 +26,11 @@ import { SatelliteTleDataSDK } from '@voxgig-sdk/satellite-tle-data'
 
 const client = new SatelliteTleDataSDK()
 
-// List all tles
-const tles = await client.tle.list()
-console.log(tles.data)
+// List all tles (returns Tle[])
+const tles = await client.Tle().list()
+for (const tle of tles) {
+  console.log(tle)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -83,12 +85,13 @@ from satellitetledata_sdk import SatelliteTleDataSDK
 
 client = SatelliteTleDataSDK()
 
-# List all tles
-tles = client.tle.list()
-print(tles)
+# List all tles (returns a list, raises on error)
+tles = client.Tle().list({})
+for tle in tles:
+    print(tle)
 
-# Load a specific tle
-tle = client.tle.load({"id": "example_id"})
+# Load a specific tle (returns the record, raises on error)
+tle = client.Tle().load({"id": "example_id"})
 print(tle)
 ```
 
@@ -100,12 +103,12 @@ require_once 'satellitetledata_sdk.php';
 
 $client = new SatelliteTleDataSDK();
 
-// List all tles (throws on error)
-$tles = $client->tle()->list();
+// List all tles (returns an array; throws on error)
+$tles = $client->Tle()->list();
 print_r($tles);
 
-// Load a specific tle
-$tle = $client->tle()->load(["id" => "example_id"]);
+// Load a specific tle (returns the bare record; throws on error)
+$tle = $client->Tle()->load(["id" => "example_id"]);
 print_r($tle);
 ```
 
@@ -128,12 +131,12 @@ require_relative "SatelliteTleData_sdk"
 
 client = SatelliteTleDataSDK.new
 
-# List all tles
-tles = client.tle.list
+# List all tles (returns an Array; raises on error)
+tles = client.Tle.list
 puts tles
 
-# Load a specific tle
-tle = client.tle.load({ "id" => "example_id" })
+# Load a specific tle (returns the bare record; raises on error)
+tle = client.Tle.load({ "id" => "example_id" })
 puts tle
 ```
 
@@ -145,11 +148,11 @@ local sdk = require("satellite-tle-data_sdk")
 local client = sdk.new()
 
 -- List all tles
-local tles, err = client:tle():list()
+local tles, err = client:Tle():list()
 print(tles)
 
 -- Load a specific tle
-local tle, err = client:tle():load({ id = "example_id" })
+local tle, err = client:Tle():load({ id = "example_id" })
 print(tle)
 ```
 
@@ -162,22 +165,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = SatelliteTleDataSDK.test()
-const result = await client.tle.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const tle = await client.Tle().load({ id: 'test01' })
+// tle is a bare Tle populated with mock data
+console.log(tle)
 ```
 
 ### Python
 
 ```python
 client = SatelliteTleDataSDK.test()
-result = client.tle.load({"id": "test01"})
+tle = client.Tle().load({"id": "test01"})
+print(tle)
 ```
 
 ### PHP
 
 ```php
-$client = SatelliteTleDataSDK::test();
-$result = $client->tle()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = SatelliteTleDataSDK::test([
+    "entity" => ["tle" => ["test01" => ["id" => "test01"]]],
+]);
+$tle = $client->Tle()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -192,15 +200,18 @@ result, err := client.Tle(nil).Load(
 ### Ruby
 
 ```ruby
-client = SatelliteTleDataSDK.test
-result = client.tle.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = SatelliteTleDataSDK.test({
+  "entity" => { "tle" => { "test01" => { "id" => "test01" } } },
+})
+tle = client.Tle.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:tle():load({ id = "test01" })
+local result, err = client:Tle():load({ id = "test01" })
 ```
 
 ## How it works
@@ -248,6 +259,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

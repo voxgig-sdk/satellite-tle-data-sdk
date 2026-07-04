@@ -80,7 +80,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## TleEntity
 
 ```python
-tle = client.tle
+tle = client.Tle()
 ```
 
 ### Fields
@@ -102,7 +102,9 @@ tle = client.tle
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.tle.list({})
+results = client.Tle().list({})
+for tle in results:
+    print(tle)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -110,7 +112,7 @@ results = client.tle.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.tle.load({"id": "tle_id"})
+result = client.Tle().load({"id": "tle_id"})
 ```
 
 ### Common Methods

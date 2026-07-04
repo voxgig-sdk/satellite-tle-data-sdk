@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:tle():list() / client:tle():load({ id = ... })
-function SatelliteTleDataSDK:tle(data)
+-- Idiomatic facade: client:Tle():list() / client:Tle():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function SatelliteTleDataSDK:Tle(data)
   local EntityMod = require("entity.tle_entity")
   if data == nil then
     if self._tle == nil then
@@ -253,12 +254,6 @@ function SatelliteTleDataSDK:tle(data)
     end
     return self._tle
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:tle() instead.
-function SatelliteTleDataSDK:Tle(data)
-  local EntityMod = require("entity.tle_entity")
   return EntityMod.new(self, data)
 end
 

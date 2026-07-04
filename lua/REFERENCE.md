@@ -83,7 +83,7 @@ same parameters as `direct()`.
 ## TleEntity
 
 ```lua
-local tle = client:tle(nil)
+local tle = client:Tle(nil)
 ```
 
 ### Fields
@@ -105,7 +105,7 @@ local tle = client:tle(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:tle():list()
+local results, err = client:Tle():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -113,7 +113,7 @@ local results, err = client:tle():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:tle():load({ id = "tle_id" })
+local result, err = client:Tle():load({ id = "tle_id" })
 ```
 
 ### Common Methods

@@ -220,25 +220,15 @@ class SatelliteTleDataSDK:
         }
 
 
-    @property
-    def tle(self):
-        """Idiomatic facade: client.tle.list() / client.tle.load({"id": ...})."""
-        from entity.tle_entity import TleEntity
-        cached = getattr(self, "_tle", None)
-        if cached is None:
-            cached = TleEntity(self, None)
-            self._tle = cached
-        return cached
-
-    def Tle(self, data=None):
-        # Deprecated: use client.tle instead.
+    def Tle(self, data=None) -> "TleEntity":
+        """Entity factory: client.Tle().list({}) / client.Tle().load({"id": ...})."""
         from entity.tle_entity import TleEntity
         return TleEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "SatelliteTleDataSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class SatelliteTleDataSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.tle_entity import TleEntity
