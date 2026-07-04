@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -110,7 +109,7 @@ Alias for `SatelliteTleDataSDK.test()`.
 ## TleEntity
 
 ```ts
-const tle = client.Tle()
+const tle = client.tle
 ```
 
 ### Fields
@@ -132,7 +131,7 @@ const tle = client.Tle()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Tle().list()
+const results = await client.tle.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -140,7 +139,7 @@ const results = await client.Tle().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Tle().load({ id: 'tle_id' })
+const result = await client.tle.load({ id: 'tle_id' })
 ```
 
 ### Common Methods

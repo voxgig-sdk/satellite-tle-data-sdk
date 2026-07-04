@@ -20,13 +20,10 @@
     "phpunit/phpunit": "^11.0"
   },
   "autoload": {
-    "psr-4": {
-      "SatelliteTleData\\": "src/"
-    }
+    "files": ["satellitetledata_sdk.php"],
+    "classmap": ["core/", "entity/", "feature/", "types/", "utility/", "config.php", "features.php"]
   },
   "autoload-dev": {
-    "psr-4": {
-      "SatelliteTleData\\Tests\\": "test/"
-    }
+    "classmap": ["test/"]
   }
 }

@@ -43,16 +43,14 @@ class TleEntityTest < Minitest::Test
     tle_ref01_ent = client.Tle(nil)
     tle_ref01_match = {}
 
-    tle_ref01_list_result, err = tle_ref01_ent.list(tle_ref01_match, nil)
-    assert_nil err
+    tle_ref01_list_result = tle_ref01_ent.list(tle_ref01_match, nil)
     assert tle_ref01_list_result.is_a?(Array)
 
     # LOAD
     tle_ref01_match_dt0 = {
       "id" => tle_ref01_data["id"],
     }
-    tle_ref01_data_dt0_loaded, err = tle_ref01_ent.load(tle_ref01_match_dt0, nil)
-    assert_nil err
+    tle_ref01_data_dt0_loaded = tle_ref01_ent.load(tle_ref01_match_dt0, nil)
     tle_ref01_data_dt0_load_result = Helpers.to_map(tle_ref01_data_dt0_loaded)
     assert !tle_ref01_data_dt0_load_result.nil?
     assert_equal tle_ref01_data_dt0_load_result["id"], tle_ref01_data["id"]
@@ -93,7 +91,6 @@ def tle_basic_setup(extra)
     "SATELLITETLEDATA_TEST_TLE_ENTID" => idmap,
     "SATELLITETLEDATA_TEST_LIVE" => "FALSE",
     "SATELLITETLEDATA_TEST_EXPLAIN" => "FALSE",
-    "SATELLITETLEDATA_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def tle_basic_setup(extra)
   if env["SATELLITETLEDATA_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["SATELLITETLEDATA_APIKEY"],
       },
       extra || {},
     ])

@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://tle.ivanstanojevic.me/api',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -203,7 +199,8 @@ class Config {
                     "name": "id",
                     "orig": "satellite_id",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },

@@ -245,6 +245,9 @@ func (sdk *SatelliteTleDataSDK) Direct(fetchargs map[string]any) (map[string]any
 }
 
 
+// Tle returns a Tle entity bound to this client.
+// Idiomatic usage: client.Tle(nil).List(nil, nil) or
+// client.Tle(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *SatelliteTleDataSDK) Tle(data map[string]any) SatelliteTleDataEntity {
 	return NewTleEntityFunc(sdk, data)
 }

@@ -244,6 +244,19 @@ end
 
 
 
+-- Idiomatic facade: client:tle():list() / client:tle():load({ id = ... })
+function SatelliteTleDataSDK:tle(data)
+  local EntityMod = require("entity.tle_entity")
+  if data == nil then
+    if self._tle == nil then
+      self._tle = EntityMod.new(self, nil)
+    end
+    return self._tle
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:tle() instead.
 function SatelliteTleDataSDK:Tle(data)
   local EntityMod = require("entity.tle_entity")
   return EntityMod.new(self, data)

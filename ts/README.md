@@ -9,9 +9,12 @@ The TypeScript SDK for the SatelliteTleData API — a type-safe, entity-oriented
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/satellite-tle-data
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/satellite-tle-data-sdk/releases](https://github.com/voxgig-sdk/satellite-tle-data-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { SatelliteTleDataSDK } from 'satellite-tle-data'
+import { SatelliteTleDataSDK } from '@voxgig-sdk/satellite-tle-data'
 
-const client = new SatelliteTleDataSDK({
-  apikey: process.env.SATELLITE-TLE-DATA_APIKEY,
-})
+const client = new SatelliteTleDataSDK()
 ```
 
 ### 2. List tles
 
 ```ts
-const result = await client.Tle().list()
+const result = await client.tle.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -42,7 +43,7 @@ if (result.ok) {
 ### 3. Load a tle
 
 ```ts
-const result = await client.Tle().load({ id: 'example_id' })
+const result = await client.tle.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -91,7 +92,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = SatelliteTleDataSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.tle.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -99,7 +100,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new SatelliteTleDataSDK({ apikey: '...' })
+const client = new SatelliteTleDataSDK()
 const testClient = client.tester()
 ```
 
@@ -108,7 +109,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.tle
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -135,7 +136,6 @@ const logger = {
 }
 
 const client = new SatelliteTleDataSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -145,8 +145,7 @@ const client = new SatelliteTleDataSDK({
 Create a `.env.local` file at the project root:
 
 ```
-SATELLITE-TLE-DATA_TEST_LIVE=TRUE
-SATELLITE-TLE-DATA_APIKEY=<your-key>
+SATELLITE_TLE_DATA_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -164,7 +163,6 @@ cd ts && npm test
 
 ```ts
 new SatelliteTleDataSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -175,7 +173,6 @@ new SatelliteTleDataSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -284,7 +281,7 @@ API path: `/tle/`
 
 ### Tle
 
-Create an instance: `const tle = client.Tle()`
+Create an instance: `const tle = client.tle`
 
 #### Operations
 
@@ -308,13 +305,13 @@ Create an instance: `const tle = client.Tle()`
 #### Example: Load
 
 ```ts
-const tle = await client.Tle().load({ id: 'tle_id' })
+const tle = await client.tle.load({ id: 'tle_id' })
 ```
 
 #### Example: List
 
 ```ts
-const tles = await client.Tle().list()
+const tles = await client.tle.list()
 ```
 
 
@@ -375,7 +372,7 @@ satellite-tle-data/
 Import the SDK from the package root:
 
 ```ts
-import { SatelliteTleDataSDK } from 'satellite-tle-data'
+import { SatelliteTleDataSDK } from '@voxgig-sdk/satellite-tle-data'
 ```
 
 ### Entity state
@@ -385,11 +382,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const tle = client.tle
+await tle.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// tle.data() now returns the loaded tle data
+// tle.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

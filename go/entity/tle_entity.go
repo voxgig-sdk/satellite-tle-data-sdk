@@ -85,6 +85,27 @@ func (e *TleEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Tle; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *TleEntity) DataTyped(data ...Tle) Tle {
+	if len(data) > 0 {
+		return typedFrom[Tle](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Tle](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Tle (all fields
+// optional at the wire level).
+func (e *TleEntity) MatchTyped(match ...Tle) Tle {
+	if len(match) > 0 {
+		return typedFrom[Tle](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Tle](e.Match())
+}
+
 
 func (e *TleEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -111,6 +132,17 @@ func (e *TleEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, err
 	})
 }
 
+// LoadTyped is the statically-typed variant of Load: it takes an
+// TleLoadMatch and returns an Tle. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *TleEntity) LoadTyped(reqmatch TleLoadMatch, ctrl map[string]any) (Tle, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return Tle{}, err
+	}
+	return typedFrom[Tle](res), nil
+}
+
 
 
 
@@ -131,6 +163,17 @@ func (e *TleEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, err
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// TleListMatch and returns []Tle. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *TleEntity) ListTyped(reqmatch TleListMatch, ctrl map[string]any) ([]Tle, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[Tle](res), nil
 }
 
 

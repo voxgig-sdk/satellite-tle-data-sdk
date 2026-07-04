@@ -2,6 +2,8 @@
 
 import { TleEntity } from './entity/TleEntity'
 
+export type * from './SatelliteTleDataTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -202,6 +204,14 @@ class SatelliteTleDataSDK {
 
 
 
+  _tle?: TleEntity
+
+  // Idiomatic facade: `client.tle.list()` / `client.tle.load({ id })`.
+  get tle(): TleEntity {
+    return (this._tle ??= new TleEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.tle` instead. */
   Tle(data?: any) {
     const self = this
     return new TleEntity(self,data)

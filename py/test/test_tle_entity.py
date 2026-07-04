@@ -50,16 +50,14 @@ class TestTleEntity:
         tle_ref01_ent = client.Tle(None)
         tle_ref01_match = {}
 
-        tle_ref01_list_result, err = tle_ref01_ent.list(tle_ref01_match, None)
-        assert err is None
+        tle_ref01_list_result = tle_ref01_ent.list(tle_ref01_match, None)
         assert isinstance(tle_ref01_list_result, list)
 
         # LOAD
         tle_ref01_match_dt0 = {
             "id": tle_ref01_data["id"],
         }
-        tle_ref01_data_dt0_loaded, err = tle_ref01_ent.load(tle_ref01_match_dt0, None)
-        assert err is None
+        tle_ref01_data_dt0_loaded = tle_ref01_ent.load(tle_ref01_match_dt0, None)
         tle_ref01_data_dt0_load_result = helpers.to_map(tle_ref01_data_dt0_loaded)
         assert tle_ref01_data_dt0_load_result is not None
         assert tle_ref01_data_dt0_load_result["id"] == tle_ref01_data["id"]
@@ -102,7 +100,6 @@ def _tle_basic_setup(extra):
         "SATELLITETLEDATA_TEST_TLE_ENTID": idmap,
         "SATELLITETLEDATA_TEST_LIVE": "FALSE",
         "SATELLITETLEDATA_TEST_EXPLAIN": "FALSE",
-        "SATELLITETLEDATA_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _tle_basic_setup(extra):
     if env.get("SATELLITETLEDATA_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("SATELLITETLEDATA_APIKEY"),
             },
             extra or {},
         ])

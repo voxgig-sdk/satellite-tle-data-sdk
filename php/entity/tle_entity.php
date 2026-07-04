@@ -55,6 +55,9 @@ class TleEntity
         return new TleEntity($this->_client, $opts);
     }
 
+    /**
+     * @param Tle|array $args Tle data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class TleEntity
         }
     }
 
+    /**
+     * @return Tle|array The current Tle data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of Tle fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class TleEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of Tle fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class TleEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single Tle.
+     *
+     * @param TleLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed TleLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Tle|array The loaded Tle as an assoc-array at the
+     *   SDK boundary; throws SatelliteTleDataError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -110,7 +131,16 @@ class TleEntity
 
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List Tle items matching the given filter.
+     *
+     * @param TleListMatch|array|null $reqmatch Match filter (any subset
+     *   of Tle fields) as an assoc-array; TleListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Tle[]|array A list of Tle items as assoc-arrays at
+     *   the SDK boundary; throws SatelliteTleDataError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -138,7 +168,7 @@ class TleEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

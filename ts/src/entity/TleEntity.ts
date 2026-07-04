@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Tle,
+  TleLoadMatch,
+  TleListMatch,
+} from '../SatelliteTleDataTypes'
 
 // TODO: needs Entity superclass
-class TleEntity extends SatelliteTleDataEntityBase {
+class TleEntity extends SatelliteTleDataEntityBase<Tle> {
 
   constructor(client: SatelliteTleDataSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class TleEntity extends SatelliteTleDataEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: TleLoadMatch, ctrl?: Control): Promise<Tle> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class TleEntity extends SatelliteTleDataEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Tle> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: TleListMatch, ctrl?: Control): Promise<Tle[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class TleEntity extends SatelliteTleDataEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Tle[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

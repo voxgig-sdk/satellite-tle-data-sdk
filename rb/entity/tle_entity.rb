@@ -45,6 +45,7 @@ class TleEntity
     end
   end
 
+  # @return [Tle, Hash] the current Tle data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class TleEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Tle fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Tle.
+  #
+  # @param reqmatch [TleLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Tle, Hash] the loaded Tle; raises SatelliteTleDataError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class TleEntity
 
 
   
+  # List Tle items matching the given filter.
+  #
+  # @param reqmatch [TleListMatch, Hash, nil] match filter (any subset of Tle fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Tle>, Array] the matching Tle items; raises SatelliteTleDataError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
