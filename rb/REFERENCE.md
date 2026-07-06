@@ -8,7 +8,7 @@ Complete API reference for the SatelliteTleData Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'satellite-tle-data_sdk'
+require_relative 'SatelliteTleData_sdk'
 
 client = SatelliteTleDataSDK.new(options)
 ```
@@ -93,22 +93,22 @@ tle = client.Tle
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | ``$STRING`` | Yes |  |
-| `id` | ``$STRING`` | No |  |
-| `line1` | ``$STRING`` | Yes |  |
-| `line2` | ``$STRING`` | Yes |  |
-| `name` | ``$STRING`` | Yes |  |
-| `satellite_id` | ``$INTEGER`` | Yes |  |
-| `type` | ``$STRING`` | No |  |
+| `date` | `String` | Yes |  |
+| `id` | `String` | No |  |
+| `line1` | `String` | Yes |  |
+| `line2` | `String` | Yes |  |
+| `name` | `String` | Yes |  |
+| `satellite_id` | `Integer` | Yes |  |
+| `type` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Tle.list(nil)
+results = client.Tle.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`

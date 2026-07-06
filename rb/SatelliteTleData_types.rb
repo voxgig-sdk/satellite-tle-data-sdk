@@ -50,7 +50,7 @@ TleLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Tle#list (any subset of Tle fields).
+# Request payload for Tle#list.
 #
 # @!attribute [rw] date
 #   @return [String, nil]

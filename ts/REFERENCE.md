@@ -116,13 +116,13 @@ const tle = client.Tle()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | ``$STRING`` | Yes |  |
-| `id` | ``$STRING`` | No |  |
-| `line1` | ``$STRING`` | Yes |  |
-| `line2` | ``$STRING`` | Yes |  |
-| `name` | ``$STRING`` | Yes |  |
-| `satellite_id` | ``$INTEGER`` | Yes |  |
-| `type` | ``$STRING`` | No |  |
+| `date` | `string` | Yes |  |
+| `id` | `string` | No |  |
+| `line1` | `string` | Yes |  |
+| `line2` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
+| `satellite_id` | `number` | Yes |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -139,7 +139,7 @@ const results = await client.Tle().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Tle().load({ id: 'tle_id' })
+const result = await client.Tle().load({ id: 1 })
 ```
 
 ### Common Methods

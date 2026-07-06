@@ -24,8 +24,7 @@ type TleLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// TleListMatch mirrors the tle fields as an all-optional match
-// filter (Go analog of Partial<Tle>).
+// TleListMatch is the typed request payload for Tle.ListTyped.
 type TleListMatch struct {
 	Date *string `json:"date,omitempty"`
 	Id *string `json:"id,omitempty"`

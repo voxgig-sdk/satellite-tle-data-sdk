@@ -19,6 +19,13 @@
 ---@field id number
 
 ---@class TleListMatch
+---@field date? string
+---@field id? string
+---@field line1? string
+---@field line2? string
+---@field name? string
+---@field satellite_id? number
+---@field type? string
 
 local M = {}
 

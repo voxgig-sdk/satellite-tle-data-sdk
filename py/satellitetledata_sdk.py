@@ -221,7 +221,7 @@ class SatelliteTleDataSDK:
 
 
     def Tle(self, data=None) -> "TleEntity":
-        """Entity factory: client.Tle().list({}) / client.Tle().load({"id": ...})."""
+        """Entity factory: client.Tle().list() / client.Tle().load({"id": ...})."""
         from entity.tle_entity import TleEntity
         return TleEntity(self, data)
 

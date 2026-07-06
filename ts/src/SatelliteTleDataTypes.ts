@@ -19,5 +19,13 @@ export interface TleLoadMatch {
   id: number
 }
 
-export type TleListMatch = Partial<Tle>
+export interface TleListMatch {
+  date?: string
+  id?: string
+  line1?: string
+  line2?: string
+  name?: string
+  satellite_id?: number
+  type?: string
+}
 

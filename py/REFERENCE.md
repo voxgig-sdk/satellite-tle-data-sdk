@@ -8,7 +8,7 @@ Complete API reference for the SatelliteTleData Python SDK.
 ### Constructor
 
 ```python
-from satellite-tle-data_sdk import SatelliteTleDataSDK
+from satellitetledata_sdk import SatelliteTleDataSDK
 
 client = SatelliteTleDataSDK(options)
 ```
@@ -87,22 +87,22 @@ tle = client.Tle()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | ``$STRING`` | Yes |  |
-| `id` | ``$STRING`` | No |  |
-| `line1` | ``$STRING`` | Yes |  |
-| `line2` | ``$STRING`` | Yes |  |
-| `name` | ``$STRING`` | Yes |  |
-| `satellite_id` | ``$INTEGER`` | Yes |  |
-| `type` | ``$STRING`` | No |  |
+| `date` | `str` | Yes |  |
+| `id` | `str` | No |  |
+| `line1` | `str` | Yes |  |
+| `line2` | `str` | Yes |  |
+| `name` | `str` | Yes |  |
+| `satellite_id` | `int` | Yes |  |
+| `type` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Tle().list({})
+results = client.Tle().list()
 for tle in results:
     print(tle)
 ```

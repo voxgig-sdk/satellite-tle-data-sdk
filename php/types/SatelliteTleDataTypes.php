@@ -30,7 +30,7 @@ class TleLoadMatch
     public int $id;
 }
 
-/** Match filter for Tle#list (any subset of Tle fields). */
+/** Request payload for Tle#list. */
 class TleListMatch
 {
     public ?string $date = null;
