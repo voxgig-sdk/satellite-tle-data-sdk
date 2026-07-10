@@ -15,9 +15,9 @@ main: {
           url: "https://tle.ivanstanojevic.me/api"
         }
       ]
+      summary: "This API provides access to Two-Line Element (TLE) data for various satellites."
       title: "Satellite TLE Data"
       version: "1.0.0"
+      website: "https://tle.ivanstanojevic.me"
     }
   }
-}
-

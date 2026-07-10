@@ -312,7 +312,7 @@ Create an instance: `tle := client.Tle(nil)`
 #### Example: Load
 
 ```go
-tle, err := client.Tle(nil).Load(map[string]any{"id": "tle_id"}, nil)
+tle, err := client.Tle(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }

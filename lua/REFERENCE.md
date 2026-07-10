@@ -113,7 +113,7 @@ local results, err = client:Tle():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Tle():load({ id = "tle_id" })
+local result, err = client:Tle():load({ id = 1 })
 ```
 
 ### Common Methods

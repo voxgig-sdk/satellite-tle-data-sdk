@@ -49,7 +49,7 @@ end
 ```ruby
 begin
   # load returns the bare Tle record (raises on error).
-  tle = client.Tle.load({ "id" => "example_id" })
+  tle = client.Tle.load({ "id" => 1 })
   puts tle
 rescue => err
   warn "load failed: #{err}"
@@ -296,7 +296,7 @@ Create an instance: `tle = client.Tle`
 
 ```ruby
 # load returns the bare Tle record (raises on error).
-tle = client.Tle.load({ "id" => "tle_id" })
+tle = client.Tle.load({ "id" => 1 })
 ```
 
 #### Example: List

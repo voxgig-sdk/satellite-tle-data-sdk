@@ -50,7 +50,7 @@ try {
 ```php
 try {
     // load() returns the bare Tle record (throws on error).
-    $tle = $client->Tle()->load(["id" => "example_id"]);
+    $tle = $client->Tle()->load(["id" => 1]);
     print_r($tle);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -306,7 +306,7 @@ Create an instance: `$tle = $client->Tle();`
 
 ```php
 // load() returns the bare Tle record (throws on error).
-$tle = $client->Tle()->load(["id" => "tle_id"]);
+$tle = $client->Tle()->load(["id" => 1]);
 ```
 
 #### Example: List

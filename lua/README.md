@@ -50,7 +50,7 @@ end
 ### 3. Load a tle
 
 ```lua
-local tle, err = client:Tle():load({ id = "example_id" })
+local tle, err = client:Tle():load({ id = 1 })
 if err then error(err) end
 print(tle)
 ```
@@ -284,7 +284,7 @@ Create an instance: `local tle = client:Tle(nil)`
 #### Example: Load
 
 ```lua
-local tle, err = client:Tle():load({ id = "tle_id" })
+local tle, err = client:Tle():load({ id = 1 })
 ```
 
 #### Example: List

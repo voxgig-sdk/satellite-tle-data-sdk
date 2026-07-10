@@ -116,7 +116,7 @@ results = client.Tle.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Tle.load({ "id" => "tle_id" })
+result = client.Tle.load({ "id" => 1 })
 ```
 
 ### Common Methods

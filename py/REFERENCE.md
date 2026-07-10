@@ -112,7 +112,7 @@ for tle in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Tle().load({"id": "tle_id"})
+result = client.Tle().load({"id": 1})
 ```
 
 ### Common Methods

@@ -56,7 +56,7 @@ except Exception as err:
 
 ```python
 try:
-    tle = client.Tle().load({"id": "example_id"})
+    tle = client.Tle().load({"id": 1})
     print(tle)
 except Exception as err:
     print(f"load failed: {err}")
@@ -298,7 +298,7 @@ Create an instance: `tle = client.Tle()`
 #### Example: Load
 
 ```python
-tle = client.Tle().load({"id": "tle_id"})
+tle = client.Tle().load({"id": 1})
 ```
 
 #### Example: List
