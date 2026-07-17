@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- SatelliteTleData SDK exists test
 
 local sdk = require("satellite-tle-data_sdk")
 
