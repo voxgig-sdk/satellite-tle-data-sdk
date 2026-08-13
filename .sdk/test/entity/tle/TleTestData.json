@@ -7,7 +7,7 @@
         "line1": "s48",
         "line2": "s49",
         "name": "s4a",
-        "satellite_id": "SATELLITE01",
+        "satelliteId": "s4b",
         "type": "s4c"
       },
       "TLE01": {
@@ -16,7 +16,7 @@
         "line1": "s8e",
         "line2": "s8f",
         "name": "s90",
-        "satellite_id": "SATELLITE01",
+        "satelliteId": "s91",
         "type": "s92"
       },
       "TLE02": {
@@ -25,7 +25,7 @@
         "line1": "sd4",
         "line2": "sd5",
         "name": "sd6",
-        "satellite_id": "SATELLITE01",
+        "satelliteId": "sd7",
         "type": "sd8"
       }
     }
@@ -37,7 +37,7 @@
         "line1": "s11a",
         "line2": "s11b",
         "name": "s11c",
-        "satellite_id": "SATELLITE01",
+        "satelliteId": "s11d",
         "type": "s11e"
       }
     }

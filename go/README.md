@@ -274,7 +274,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | `"line1"` |  |
 | `"line2"` |  |
 | `"name"` |  |
-| `"satellite_id"` |  |
+| `"satelliteId"` |  |
 | `"type"` |  |
 
 Operations: List, Load.
@@ -306,7 +306,7 @@ Create an instance: `tle := client.Tle(nil)`
 | `line1` | `string` |  |
 | `line2` | `string` |  |
 | `name` | `string` |  |
-| `satellite_id` | `int` |  |
+| `satelliteId` | `int` |  |
 | `type` | `string` |  |
 
 #### Example: Load

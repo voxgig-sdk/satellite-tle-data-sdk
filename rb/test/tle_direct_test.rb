@@ -112,11 +112,11 @@ def tle_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "SATELLITETLEDATA_TEST_TLE_ENTID" => {},
-    "SATELLITETLEDATA_TEST_LIVE" => "FALSE",
+    "SATELLITE_TLE_DATA_TEST_TLE_ENTID" => {},
+    "SATELLITE_TLE_DATA_TEST_LIVE" => "FALSE",
   })
 
-  live = env["SATELLITETLEDATA_TEST_LIVE"] == "TRUE"
+  live = env["SATELLITE_TLE_DATA_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

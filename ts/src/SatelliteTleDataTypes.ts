@@ -11,7 +11,7 @@ export interface Tle {
   line1: string
   line2: string
   name: string
-  satellite_id: number
+  satelliteId: number
   type?: string
 }
 
@@ -25,7 +25,7 @@ export interface TleListMatch {
   line1?: string
   line2?: string
   name?: string
-  satellite_id?: number
+  satelliteId?: number
   type?: string
 }
 

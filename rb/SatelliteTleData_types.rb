@@ -25,7 +25,7 @@
 # @!attribute [rw] name
 #   @return [String]
 #
-# @!attribute [rw] satellite_id
+# @!attribute [rw] satelliteId
 #   @return [Integer]
 #
 # @!attribute [rw] type
@@ -36,7 +36,7 @@ Tle = Struct.new(
   :line1,
   :line2,
   :name,
-  :satellite_id,
+  :satelliteId,
   :type,
   keyword_init: true
 )
@@ -67,7 +67,7 @@ TleLoadMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] satellite_id
+# @!attribute [rw] satelliteId
 #   @return [Integer, nil]
 #
 # @!attribute [rw] type
@@ -78,7 +78,7 @@ TleListMatch = Struct.new(
   :line1,
   :line2,
   :name,
-  :satellite_id,
+  :satelliteId,
   :type,
   keyword_init: true
 )

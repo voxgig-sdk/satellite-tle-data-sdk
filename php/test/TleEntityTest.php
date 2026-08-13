@@ -72,7 +72,7 @@ class TleEntityTest extends TestCase
         // The basic flow consumes synthetic IDs from the fixture. In live mode
         // without an *_ENTID env override, those IDs hit the live API and 4xx.
         if (!empty($setup["synthetic_only"])) {
-            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set SATELLITETLEDATA_TEST_TLE_ENTID JSON to run live");
+            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set SATELLITE_TLE_DATA_TEST_TLE_ENTID JSON to run live");
             return;
         }
         $client = $setup["client"];
@@ -97,7 +97,7 @@ class TleEntityTest extends TestCase
             "id" => $tle_ref01_data["id"],
         ];
         $tle_ref01_data_dt0_loaded = $tle_ref01_ent->load($tle_ref01_match_dt0, null);
-        $tle_ref01_data_dt0_load_result = Helpers::to_map($tle_ref01_data_dt0_loaded);
+        $tle_ref01_data_dt0_load_result = Helpers::to_map(is_object($tle_ref01_data_dt0_loaded) && method_exists($tle_ref01_data_dt0_loaded, 'data_get') ? $tle_ref01_data_dt0_loaded->data_get() : $tle_ref01_data_dt0_loaded);
         $this->assertNotNull($tle_ref01_data_dt0_load_result);
         $this->assertEquals($tle_ref01_data_dt0_load_result["id"], $tle_ref01_data["id"]);
 
@@ -126,22 +126,22 @@ function tle_basic_setup($extra)
     // Detect ENTID env override before envOverride consumes it. When live
     // mode is on without a real override, the basic test runs against synthetic
     // IDs from the fixture and 4xx's. Surface this so the test can skip.
-    $entid_env_raw = getenv("SATELLITETLEDATA_TEST_TLE_ENTID");
+    $entid_env_raw = getenv("SATELLITE_TLE_DATA_TEST_TLE_ENTID");
     $idmap_overridden = $entid_env_raw !== false && str_starts_with(trim($entid_env_raw), "{");
 
     $env = Runner::env_override([
-        "SATELLITETLEDATA_TEST_TLE_ENTID" => $idmap,
-        "SATELLITETLEDATA_TEST_LIVE" => "FALSE",
-        "SATELLITETLEDATA_TEST_EXPLAIN" => "FALSE",
+        "SATELLITE_TLE_DATA_TEST_TLE_ENTID" => $idmap,
+        "SATELLITE_TLE_DATA_TEST_LIVE" => "FALSE",
+        "SATELLITE_TLE_DATA_TEST_EXPLAIN" => "FALSE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
-        $env["SATELLITETLEDATA_TEST_TLE_ENTID"]);
+        $env["SATELLITE_TLE_DATA_TEST_TLE_ENTID"]);
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
     }
 
-    if ($env["SATELLITETLEDATA_TEST_LIVE"] === "TRUE") {
+    if ($env["SATELLITE_TLE_DATA_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
             ],
@@ -150,13 +150,13 @@ function tle_basic_setup($extra)
         $client = new SatelliteTleDataSDK(Helpers::to_map($merged_opts));
     }
 
-    $live = $env["SATELLITETLEDATA_TEST_LIVE"] === "TRUE";
+    $live = $env["SATELLITE_TLE_DATA_TEST_LIVE"] === "TRUE";
     return [
         "client" => $client,
         "data" => $entity_data,
         "idmap" => $idmap_resolved,
         "env" => $env,
-        "explain" => $env["SATELLITETLEDATA_TEST_EXPLAIN"] === "TRUE",
+        "explain" => $env["SATELLITE_TLE_DATA_TEST_EXPLAIN"] === "TRUE",
         "live" => $live,
         "synthetic_only" => $live && !$idmap_overridden,
         "now" => (int)(microtime(true) * 1000),

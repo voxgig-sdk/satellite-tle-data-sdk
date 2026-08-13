@@ -61,7 +61,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "satellite_id",
+            ["name"] = "satelliteId",
             ["req"] = true,
             ["type"] = "`$INTEGER`",
             ["index$"] = 5,
@@ -131,6 +131,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/tle/",
                 ["parts"] = {
@@ -174,6 +175,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/tle/{satelliteId}",
                 ["parts"] = {

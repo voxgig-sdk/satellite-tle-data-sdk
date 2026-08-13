@@ -16,11 +16,11 @@
 import pytest
 
 from satellitetledata_sdk import SatelliteTleDataSDK
-from core.error import SatelliteTleDataError
-from core.result import SatelliteTleDataResult
-from core.response import SatelliteTleDataResponse
-from core.spec import SatelliteTleDataSpec
-from feature.base_feature import SatelliteTleDataBaseFeature
+from satellitetledata_sdk.core.error import SatelliteTleDataError
+from satellitetledata_sdk.core.result import SatelliteTleDataResult
+from satellitetledata_sdk.core.response import SatelliteTleDataResponse
+from satellitetledata_sdk.core.spec import SatelliteTleDataSpec
+from satellitetledata_sdk.feature.base_feature import SatelliteTleDataBaseFeature
 
 
 def _client():

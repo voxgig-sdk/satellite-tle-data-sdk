@@ -49,7 +49,7 @@ try {
 
 ```php
 try {
-    // load() returns the bare Tle record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Tle record (throws on error).
     $tle = $client->Tle()->load(["id" => 1]);
     print_r($tle);
 } catch (\Throwable $err) {
@@ -140,7 +140,8 @@ $client = SatelliteTleDataSDK::test([
     "entity" => ["tle" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $tle = $client->Tle()->list();
 print_r($tle);
 ```
@@ -240,7 +241,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -267,7 +268,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | `line1` |  |
 | `line2` |  |
 | `name` |  |
-| `satellite_id` |  |
+| `satelliteId` |  |
 | `type` |  |
 
 Operations: List, Load.
@@ -299,13 +300,13 @@ Create an instance: `$tle = $client->Tle();`
 | `line1` | `string` |  |
 | `line2` | `string` |  |
 | `name` | `string` |  |
-| `satellite_id` | `int` |  |
+| `satelliteId` | `int` |  |
 | `type` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Tle record (throws on error).
+// load() returns the ENTITY — call data_get() for the Tle record (throws on error).
 $tle = $client->Tle()->load(["id" => 1]);
 ```
 

@@ -48,7 +48,7 @@ end
 
 ```ruby
 begin
-  # load returns the bare Tle record (raises on error).
+  # load returns the ENTITY — call data_get for the Tle record (raises on error).
   tle = client.Tle.load({ "id" => 1 })
   puts tle
 rescue => err
@@ -134,7 +134,8 @@ client = SatelliteTleDataSDK.test({
   "entity" => { "tle" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 tle = client.Tle.list()
 puts tle
 ```
@@ -257,7 +258,7 @@ returns a result `Hash` with these keys:
 | `line1` |  |
 | `line2` |  |
 | `name` |  |
-| `satellite_id` |  |
+| `satelliteId` |  |
 | `type` |  |
 
 Operations: List, Load.
@@ -289,13 +290,13 @@ Create an instance: `tle = client.Tle`
 | `line1` | `String` |  |
 | `line2` | `String` |  |
 | `name` | `String` |  |
-| `satellite_id` | `Integer` |  |
+| `satelliteId` | `Integer` |  |
 | `type` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Tle record (raises on error).
+# load returns the ENTITY — call data_get for the Tle record (raises on error).
 tle = client.Tle.load({ "id" => 1 })
 ```
 

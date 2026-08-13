@@ -92,7 +92,7 @@ tle = client.Tle()
 | `line1` | `str` | Yes |  |
 | `line2` | `str` | Yes |  |
 | `name` | `str` | Yes |  |
-| `satellite_id` | `int` | Yes |  |
+| `satelliteId` | `int` | Yes |  |
 | `type` | `str` | No |  |
 
 ### Operations

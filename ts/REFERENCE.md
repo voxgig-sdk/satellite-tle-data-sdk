@@ -121,7 +121,7 @@ const tle = client.Tle()
 | `line1` | `string` | Yes |  |
 | `line2` | `string` | Yes |  |
 | `name` | `string` | Yes |  |
-| `satellite_id` | `number` | Yes |  |
+| `satelliteId` | `number` | Yes |  |
 | `type` | `string` | No |  |
 
 ### Operations

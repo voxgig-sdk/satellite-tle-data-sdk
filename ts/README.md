@@ -35,7 +35,9 @@ const client = new SatelliteTleDataSDK()
 
 ### 2. List tle records
 
-`list()` resolves to an array of Tle objects — iterate it directly:
+`list()` resolves to an array of Tle ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const tles = await client.Tle().list()
@@ -133,7 +135,8 @@ Create a mock client for unit testing — no server required:
 const client = SatelliteTleDataSDK.test()
 
 const tle = await client.Tle().list()
-// tle is a bare entity populated with mock response data
+// tle is the entity, populated with mock response data
+// — call tle.data() for the record itself
 console.log(tle)
 ```
 
@@ -304,7 +307,7 @@ The `prepare()` method returns:
 | `line1` |  |
 | `line2` |  |
 | `name` |  |
-| `satellite_id` |  |
+| `satelliteId` |  |
 | `type` |  |
 
 Operations: list, load.
@@ -336,7 +339,7 @@ Create an instance: `const tle = client.Tle()`
 | `line1` | `string` |  |
 | `line2` | `string` |  |
 | `name` | `string` |  |
-| `satellite_id` | `number` |  |
+| `satelliteId` | `number` |  |
 | `type` | `string` |  |
 
 #### Example: Load

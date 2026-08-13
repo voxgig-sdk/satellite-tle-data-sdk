@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# SatelliteTleData SDK exists test
 
 import pytest
 from satellitetledata_sdk import SatelliteTleDataSDK

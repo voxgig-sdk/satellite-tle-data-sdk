@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ SatelliteTleDataUtility::setRegistrar(function (SatelliteTleDataUtility $u): voi
     $u->prepare_params = [SatelliteTleDataPrepareParams::class, 'call'];
     $u->prepare_path = [SatelliteTleDataPreparePath::class, 'call'];
     $u->prepare_query = [SatelliteTleDataPrepareQuery::class, 'call'];
+    $u->graphql_body = [SatelliteTleDataGraphql::class, 'body'];
+    $u->graphql_errors = [SatelliteTleDataGraphql::class, 'errors'];
     $u->result_basic = [SatelliteTleDataResultBasic::class, 'call'];
     $u->result_body = [SatelliteTleDataResultBody::class, 'call'];
     $u->result_headers = [SatelliteTleDataResultHeaders::class, 'call'];

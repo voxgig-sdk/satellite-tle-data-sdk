@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = SatelliteTleDataSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = SatelliteTleDataSDK.test({
+  entity: {
+    tle: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const tles = await client.Tle().list()
-// tles is an array of bare Tle records populated with mock data
+// tles is an array of Tle entities, populated with mock data
+// — call tles[0].data() for the record itself
 console.log(tles)
 ```
 
@@ -110,7 +119,7 @@ import { SatelliteTleDataSDK } from '@voxgig-sdk/satellite-tle-data'
 
 const client = new SatelliteTleDataSDK()
 
-// List all tles (returns Tle[])
+// List all tles (returns TleEntity[] — .data() for the record)
 const tles = await client.Tle().list()
 for (const tle of tles) {
   console.log(tle)
@@ -191,7 +200,7 @@ $client = new SatelliteTleDataSDK();
 $tles = $client->Tle()->list();
 print_r($tles);
 
-// Load a specific tle (returns the bare record; throws on error)
+// Load a specific tle (returns the ENTITY; call data_get() for the record; throws on error)
 $tle = $client->Tle()->load(["id" => 1]);
 print_r($tle);
 ```
@@ -222,7 +231,7 @@ client = SatelliteTleDataSDK.new
 tles = client.Tle.list
 puts tles
 
-# Load a specific tle (returns the bare record; raises on error)
+# Load a specific tle (returns the ENTITY; call data_get for the record)
 tle = client.Tle.load({ "id" => 1 })
 puts tle
 ```
@@ -359,6 +368,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://tle.ivanstanojevic.me/api/tle/](https://tle.ivanstanojevic.me/api/tle/)
 

@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from satellitetledata_sdk.utility.voxgig_struct import voxgig_struct as vs
 from satellitetledata_sdk import SatelliteTleDataSDK
-from core import helpers
+from satellitetledata_sdk.core import helpers
 from test import runner
 
 
@@ -102,11 +102,11 @@ def _tle_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "SATELLITETLEDATA_TEST_TLE_ENTID": {},
-        "SATELLITETLEDATA_TEST_LIVE": "FALSE",
+        "SATELLITE_TLE_DATA_TEST_TLE_ENTID": {},
+        "SATELLITE_TLE_DATA_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("SATELLITETLEDATA_TEST_LIVE") == "TRUE"
+    live = env.get("SATELLITE_TLE_DATA_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

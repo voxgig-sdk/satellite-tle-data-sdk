@@ -246,7 +246,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | `line1` |  |
 | `line2` |  |
 | `name` |  |
-| `satellite_id` |  |
+| `satelliteId` |  |
 | `type` |  |
 
 Operations: List, Load.
@@ -278,7 +278,7 @@ Create an instance: `local tle = client:Tle(nil)`
 | `line1` | `string` |  |
 | `line2` | `string` |  |
 | `name` | `string` |  |
-| `satellite_id` | `number` |  |
+| `satelliteId` | `number` |  |
 | `type` | `string` |  |
 
 #### Example: Load

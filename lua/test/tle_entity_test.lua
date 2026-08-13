@@ -70,7 +70,7 @@ describe("TleEntity", function()
     -- The basic flow consumes synthetic IDs from the fixture. In live mode
     -- without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup.synthetic_only then
-      pending("live entity test uses synthetic IDs from fixture — set SATELLITETLEDATA_TEST_TLE_ENTID JSON to run live")
+      pending("live entity test uses synthetic IDs from fixture — set SATELLITE_TLE_DATA_TEST_TLE_ENTID JSON to run live")
       return
     end
     local client = setup.client
@@ -97,7 +97,7 @@ describe("TleEntity", function()
     }
     local tle_ref01_data_dt0_loaded, err = tle_ref01_ent:load(tle_ref01_match_dt0, nil)
     assert.is_nil(err)
-    local tle_ref01_data_dt0_load_result = helpers.to_map(tle_ref01_data_dt0_loaded)
+    local tle_ref01_data_dt0_load_result = helpers.to_map(type(tle_ref01_data_dt0_loaded) == 'table' and tle_ref01_data_dt0_loaded.data_get and tle_ref01_data_dt0_loaded:data_get() or tle_ref01_data_dt0_loaded)
     assert.is_not_nil(tle_ref01_data_dt0_load_result)
     assert.are.equal(tle_ref01_data_dt0_load_result["id"], tle_ref01_data["id"])
 
@@ -136,22 +136,22 @@ function tle_basic_setup(extra)
   -- Detect ENTID env override before envOverride consumes it. When live
   -- mode is on without a real override, the basic test runs against synthetic
   -- IDs from the fixture and 4xx's. Surface this so the test can skip.
-  local entid_env_raw = os.getenv("SATELLITETLEDATA_TEST_TLE_ENTID")
+  local entid_env_raw = os.getenv("SATELLITE_TLE_DATA_TEST_TLE_ENTID")
   local idmap_overridden = entid_env_raw ~= nil and entid_env_raw:match("^%s*{") ~= nil
 
   local env = runner.env_override({
-    ["SATELLITETLEDATA_TEST_TLE_ENTID"] = idmap,
-    ["SATELLITETLEDATA_TEST_LIVE"] = "FALSE",
-    ["SATELLITETLEDATA_TEST_EXPLAIN"] = "FALSE",
+    ["SATELLITE_TLE_DATA_TEST_TLE_ENTID"] = idmap,
+    ["SATELLITE_TLE_DATA_TEST_LIVE"] = "FALSE",
+    ["SATELLITE_TLE_DATA_TEST_EXPLAIN"] = "FALSE",
   })
 
   local idmap_resolved = helpers.to_map(
-    env["SATELLITETLEDATA_TEST_TLE_ENTID"])
+    env["SATELLITE_TLE_DATA_TEST_TLE_ENTID"])
   if idmap_resolved == nil then
     idmap_resolved = helpers.to_map(idmap)
   end
 
-  if env["SATELLITETLEDATA_TEST_LIVE"] == "TRUE" then
+  if env["SATELLITE_TLE_DATA_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
       },
@@ -160,13 +160,13 @@ function tle_basic_setup(extra)
     client = sdk.new(helpers.to_map(merged_opts))
   end
 
-  local live = env["SATELLITETLEDATA_TEST_LIVE"] == "TRUE"
+  local live = env["SATELLITE_TLE_DATA_TEST_LIVE"] == "TRUE"
   return {
     client = client,
     data = entity_data,
     idmap = idmap_resolved,
     env = env,
-    explain = env["SATELLITETLEDATA_TEST_EXPLAIN"] == "TRUE",
+    explain = env["SATELLITE_TLE_DATA_TEST_EXPLAIN"] == "TRUE",
     live = live,
     synthetic_only = live and not idmap_overridden,
     now = os.time() * 1000,

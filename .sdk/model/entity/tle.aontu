@@ -31,7 +31,7 @@ main: kit: entity: tle: {
       type: "`$STRING`"
     }
     {
-      name: "satellite_id"
+      name: "satelliteId"
       req: true
       type: "`$INTEGER`"
     }

@@ -23,8 +23,8 @@ module SatelliteTleDataTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("SATELLITETLEDATA_TEST_LIVE")
-    override = getenv("SATELLITETLEDATA_TEST_OVERRIDE")
+    live = getenv("SATELLITE_TLE_DATA_TEST_LIVE")
+    override = getenv("SATELLITE_TLE_DATA_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module SatelliteTleDataTestRunner
       end
     end
 
-    explain = getenv("SATELLITETLEDATA_TEST_EXPLAIN")
-    m["SATELLITETLEDATA_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("SATELLITE_TLE_DATA_TEST_EXPLAIN")
+    m["SATELLITE_TLE_DATA_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

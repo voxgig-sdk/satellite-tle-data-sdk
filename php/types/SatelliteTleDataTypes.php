@@ -20,7 +20,7 @@ class Tle
     public string $line1;
     public string $line2;
     public string $name;
-    public int $satellite_id;
+    public int $satelliteId;
     public ?string $type = null;
 }
 
@@ -38,7 +38,7 @@ class TleListMatch
     public ?string $line1 = null;
     public ?string $line2 = null;
     public ?string $name = null;
-    public ?int $satellite_id = null;
+    public ?int $satelliteId = null;
     public ?string $type = null;
 }
 

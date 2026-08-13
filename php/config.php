@@ -67,7 +67,7 @@ class SatelliteTleDataConfig
             ],
             [
               'active' => true,
-              'name' => 'satellite_id',
+              'name' => 'satelliteId',
               'req' => true,
               'type' => '`$INTEGER`',
               'index$' => 5,
@@ -137,6 +137,7 @@ class SatelliteTleDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/tle/',
                   'parts' => [
@@ -180,6 +181,7 @@ class SatelliteTleDataConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/tle/{satelliteId}',
                   'parts' => [

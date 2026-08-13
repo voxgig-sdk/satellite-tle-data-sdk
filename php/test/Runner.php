@@ -43,8 +43,8 @@ class SatelliteTleDataTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('SATELLITETLEDATA_TEST_LIVE');
-        $override = self::getenv('SATELLITETLEDATA_TEST_OVERRIDE');
+        $live = self::getenv('SATELLITE_TLE_DATA_TEST_LIVE');
+        $override = self::getenv('SATELLITE_TLE_DATA_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class SatelliteTleDataTestRunner
             }
         }
 
-        $explain = self::getenv('SATELLITETLEDATA_TEST_EXPLAIN');
+        $explain = self::getenv('SATELLITE_TLE_DATA_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['SATELLITETLEDATA_TEST_EXPLAIN'] = $explain;
+            $m['SATELLITE_TLE_DATA_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

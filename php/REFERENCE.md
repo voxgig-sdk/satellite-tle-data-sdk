@@ -97,7 +97,7 @@ $tle = $client->Tle();
 | `line1` | `string` | Yes |  |
 | `line2` | `string` | Yes |  |
 | `name` | `string` | Yes |  |
-| `satellite_id` | `int` | Yes |  |
+| `satelliteId` | `int` | Yes |  |
 | `type` | `string` | No |  |
 
 ### Operations

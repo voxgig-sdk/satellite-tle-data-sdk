@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'SatelliteTleData',
   }
 
 
@@ -91,7 +91,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "satellite_id",
+          "name": "satelliteId",
           "req": true,
           "type": "`$INTEGER`",
           "index$": 5
@@ -161,6 +161,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/tle/",
               "parts": [
@@ -204,6 +205,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/tle/{satelliteId}",
               "parts": [

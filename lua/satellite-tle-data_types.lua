@@ -12,7 +12,7 @@
 ---@field line1 string
 ---@field line2 string
 ---@field name string
----@field satellite_id number
+---@field satelliteId number
 ---@field type? string
 
 ---@class TleLoadMatch
@@ -24,7 +24,7 @@
 ---@field line1? string
 ---@field line2? string
 ---@field name? string
----@field satellite_id? number
+---@field satelliteId? number
 ---@field type? string
 
 local M = {}

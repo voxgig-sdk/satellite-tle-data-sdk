@@ -26,8 +26,8 @@ import {
 describe('TleEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SATELLITETLEDATA_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SATELLITETLEDATA_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SATELLITE_TLE_DATA_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SATELLITE_TLE_DATA_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SatelliteTleDataSDK.test()
@@ -63,13 +63,13 @@ describe('TleEntity', async () => {
     const tle_ref01_ent = client.Tle()
     const tle_ref01_match: any = {}
 
-    const tle_ref01_list = await tle_ref01_ent.list(tle_ref01_match)
+    const tle_ref01_list = (await tle_ref01_ent.list(tle_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const tle_ref01_match_dt0: any = {}
     tle_ref01_match_dt0.id = tle_ref01_data.id
-    const tle_ref01_data_dt0 = await tle_ref01_ent.load(tle_ref01_match_dt0)
+    const tle_ref01_data_dt0 = (await tle_ref01_ent.load(tle_ref01_match_dt0)).data()
     assert(tle_ref01_data_dt0.id === tle_ref01_data.id)
 
 

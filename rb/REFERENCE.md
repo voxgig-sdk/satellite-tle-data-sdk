@@ -98,7 +98,7 @@ tle = client.Tle
 | `line1` | `String` | Yes |  |
 | `line2` | `String` | Yes |  |
 | `name` | `String` | Yes |  |
-| `satellite_id` | `Integer` | Yes |  |
+| `satelliteId` | `Integer` | Yes |  |
 | `type` | `String` | No |  |
 
 ### Operations
