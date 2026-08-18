@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from satellitetledata_sdk.config import make_config
+from satellitetledata_sdk.config import shared_config
 from satellitetledata_sdk.features import _make_feature
 from satellitetledata_sdk.core.control import SatelliteTleDataControl
 from satellitetledata_sdk.core.error import SatelliteTleDataError
@@ -24,7 +24,7 @@ from satellitetledata_sdk.core.spec import SatelliteTleDataSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

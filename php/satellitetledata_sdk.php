@@ -40,7 +40,7 @@ class SatelliteTleDataSDK
         $utility = new SatelliteTleDataUtility();
         $this->_utility = $utility;
 
-        $config = SatelliteTleDataConfig::make_config();
+        $config = SatelliteTleDataConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

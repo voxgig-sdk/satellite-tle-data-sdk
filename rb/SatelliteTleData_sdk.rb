@@ -28,7 +28,7 @@ class SatelliteTleDataSDK
     utility = SatelliteTleDataUtility.new
     @_utility = utility
 
-    config = SatelliteTleDataConfig.make_config
+    config = SatelliteTleDataConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,
