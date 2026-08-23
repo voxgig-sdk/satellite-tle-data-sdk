@@ -241,13 +241,13 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `date` |  |
-| `id` |  |
-| `line1` |  |
-| `line2` |  |
-| `name` |  |
-| `satelliteId` |  |
-| `type` |  |
+| `date` | Date and time of the TLE data |
+| `id` | Unique identifier URI for the TLE resource |
+| `line1` | First line of the Two-Line Element set |
+| `line2` | Second line of the Two-Line Element set |
+| `name` | Name of the satellite |
+| `satelliteId` | NORAD catalog ID of the satellite |
+| `type` | Resource type |
 
 Operations: List, Load.
 
@@ -273,13 +273,13 @@ Create an instance: `local tle = client:Tle(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | `string` |  |
-| `id` | `string` |  |
-| `line1` | `string` |  |
-| `line2` | `string` |  |
-| `name` | `string` |  |
-| `satelliteId` | `number` |  |
-| `type` | `string` |  |
+| `date` | `string` | Date and time of the TLE data |
+| `id` | `string` | Unique identifier URI for the TLE resource |
+| `line1` | `string` | First line of the Two-Line Element set |
+| `line2` | `string` | Second line of the Two-Line Element set |
+| `name` | `string` | Name of the satellite |
+| `satelliteId` | `number` | NORAD catalog ID of the satellite |
+| `type` | `string` | Resource type |
 
 #### Example: Load
 

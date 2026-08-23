@@ -6,7 +6,7 @@ The Golang SDK for the SatelliteTleData API — an entity-oriented client using 
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Tle(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -269,13 +269,13 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"date"` |  |
-| `"id"` |  |
-| `"line1"` |  |
-| `"line2"` |  |
-| `"name"` |  |
-| `"satelliteId"` |  |
-| `"type"` |  |
+| `"date"` | Date and time of the TLE data |
+| `"id"` | Unique identifier URI for the TLE resource |
+| `"line1"` | First line of the Two-Line Element set |
+| `"line2"` | Second line of the Two-Line Element set |
+| `"name"` | Name of the satellite |
+| `"satelliteId"` | NORAD catalog ID of the satellite |
+| `"type"` | Resource type |
 
 Operations: List, Load.
 
@@ -301,13 +301,13 @@ Create an instance: `tle := client.Tle(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | `string` |  |
-| `id` | `string` |  |
-| `line1` | `string` |  |
-| `line2` | `string` |  |
-| `name` | `string` |  |
-| `satelliteId` | `int` |  |
-| `type` | `string` |  |
+| `date` | `string` | Date and time of the TLE data |
+| `id` | `string` | Unique identifier URI for the TLE resource |
+| `line1` | `string` | First line of the Two-Line Element set |
+| `line2` | `string` | Second line of the Two-Line Element set |
+| `name` | `string` | Name of the satellite |
+| `satelliteId` | `int` | NORAD catalog ID of the satellite |
+| `type` | `string` | Resource type |
 
 #### Example: Load
 

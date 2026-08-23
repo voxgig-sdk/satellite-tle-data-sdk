@@ -87,13 +87,13 @@ tle = client.Tle()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | `str` | Yes |  |
-| `id` | `str` | No |  |
-| `line1` | `str` | Yes |  |
-| `line2` | `str` | Yes |  |
-| `name` | `str` | Yes |  |
-| `satelliteId` | `int` | Yes |  |
-| `type` | `str` | No |  |
+| `date` | `str` | Yes | Date and time of the TLE data |
+| `id` | `str` | No | Unique identifier URI for the TLE resource |
+| `line1` | `str` | Yes | First line of the Two-Line Element set |
+| `line2` | `str` | Yes | Second line of the Two-Line Element set |
+| `name` | `str` | Yes | Name of the satellite |
+| `satelliteId` | `int` | Yes | NORAD catalog ID of the satellite |
+| `type` | `str` | No | Resource type |
 
 ### Operations
 

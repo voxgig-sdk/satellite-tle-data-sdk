@@ -253,13 +253,13 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `date` |  |
-| `id` |  |
-| `line1` |  |
-| `line2` |  |
-| `name` |  |
-| `satelliteId` |  |
-| `type` |  |
+| `date` | Date and time of the TLE data |
+| `id` | Unique identifier URI for the TLE resource |
+| `line1` | First line of the Two-Line Element set |
+| `line2` | Second line of the Two-Line Element set |
+| `name` | Name of the satellite |
+| `satelliteId` | NORAD catalog ID of the satellite |
+| `type` | Resource type |
 
 Operations: List, Load.
 
@@ -285,13 +285,13 @@ Create an instance: `tle = client.Tle`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | `String` |  |
-| `id` | `String` |  |
-| `line1` | `String` |  |
-| `line2` | `String` |  |
-| `name` | `String` |  |
-| `satelliteId` | `Integer` |  |
-| `type` | `String` |  |
+| `date` | `String` | Date and time of the TLE data |
+| `id` | `String` | Unique identifier URI for the TLE resource |
+| `line1` | `String` | First line of the Two-Line Element set |
+| `line2` | `String` | Second line of the Two-Line Element set |
+| `name` | `String` | Name of the satellite |
+| `satelliteId` | `Integer` | NORAD catalog ID of the satellite |
+| `type` | `String` | Resource type |
 
 #### Example: Load
 

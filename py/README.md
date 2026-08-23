@@ -256,13 +256,13 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `date` |  |
-| `id` |  |
-| `line1` |  |
-| `line2` |  |
-| `name` |  |
-| `satelliteId` |  |
-| `type` |  |
+| `date` | Date and time of the TLE data |
+| `id` | Unique identifier URI for the TLE resource |
+| `line1` | First line of the Two-Line Element set |
+| `line2` | Second line of the Two-Line Element set |
+| `name` | Name of the satellite |
+| `satelliteId` | NORAD catalog ID of the satellite |
+| `type` | Resource type |
 
 Operations: List, Load.
 
@@ -288,13 +288,13 @@ Create an instance: `tle = client.Tle()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | `str` |  |
-| `id` | `str` |  |
-| `line1` | `str` |  |
-| `line2` | `str` |  |
-| `name` | `str` |  |
-| `satelliteId` | `int` |  |
-| `type` | `str` |  |
+| `date` | `str` | Date and time of the TLE data |
+| `id` | `str` | Unique identifier URI for the TLE resource |
+| `line1` | `str` | First line of the Two-Line Element set |
+| `line2` | `str` | Second line of the Two-Line Element set |
+| `name` | `str` | Name of the satellite |
+| `satelliteId` | `int` | NORAD catalog ID of the satellite |
+| `type` | `str` | Resource type |
 
 #### Example: Load
 

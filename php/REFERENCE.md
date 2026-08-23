@@ -92,13 +92,13 @@ $tle = $client->Tle();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | `string` | Yes |  |
-| `id` | `string` | No |  |
-| `line1` | `string` | Yes |  |
-| `line2` | `string` | Yes |  |
-| `name` | `string` | Yes |  |
-| `satelliteId` | `int` | Yes |  |
-| `type` | `string` | No |  |
+| `date` | `string` | Yes | Date and time of the TLE data |
+| `id` | `string` | No | Unique identifier URI for the TLE resource |
+| `line1` | `string` | Yes | First line of the Two-Line Element set |
+| `line2` | `string` | Yes | Second line of the Two-Line Element set |
+| `name` | `string` | Yes | Name of the satellite |
+| `satelliteId` | `int` | Yes | NORAD catalog ID of the satellite |
+| `type` | `string` | No | Resource type |
 
 ### Operations
 

@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -302,13 +302,13 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `date` |  |
-| `id` |  |
-| `line1` |  |
-| `line2` |  |
-| `name` |  |
-| `satelliteId` |  |
-| `type` |  |
+| `date` | Date and time of the TLE data |
+| `id` | Unique identifier URI for the TLE resource |
+| `line1` | First line of the Two-Line Element set |
+| `line2` | Second line of the Two-Line Element set |
+| `name` | Name of the satellite |
+| `satelliteId` | NORAD catalog ID of the satellite |
+| `type` | Resource type |
 
 Operations: list, load.
 
@@ -334,13 +334,13 @@ Create an instance: `const tle = client.Tle()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | `string` |  |
-| `id` | `string` |  |
-| `line1` | `string` |  |
-| `line2` | `string` |  |
-| `name` | `string` |  |
-| `satelliteId` | `number` |  |
-| `type` | `string` |  |
+| `date` | `string` | Date and time of the TLE data |
+| `id` | `string` | Unique identifier URI for the TLE resource |
+| `line1` | `string` | First line of the Two-Line Element set |
+| `line2` | `string` | Second line of the Two-Line Element set |
+| `name` | `string` | Name of the satellite |
+| `satelliteId` | `number` | NORAD catalog ID of the satellite |
+| `type` | `string` | Resource type |
 
 #### Example: Load
 

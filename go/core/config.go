@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "SatelliteTleData",
+			"slug": "satellite-tle-data",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -34,34 +37,41 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "date",
 						"req": true,
+						"short": "Date and time of the TLE data",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier URI for the TLE resource",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "line1",
 						"req": true,
+						"short": "First line of the Two-Line Element set",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "line2",
 						"req": true,
+						"short": "Second line of the Two-Line Element set",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
 						"req": true,
+						"short": "Name of the satellite",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "satelliteId",
 						"req": true,
+						"short": "NORAD catalog ID of the satellite",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "type",
+						"short": "Resource type",
 						"type": "`$STRING`",
 					},
 				},

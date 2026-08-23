@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "SatelliteTleData",
+      slug = "satellite-tle-data",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -30,34 +33,41 @@ local function make_config()
           {
             ["name"] = "date",
             ["req"] = true,
+            ["short"] = "Date and time of the TLE data",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "id",
+            ["short"] = "Unique identifier URI for the TLE resource",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "line1",
             ["req"] = true,
+            ["short"] = "First line of the Two-Line Element set",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "line2",
             ["req"] = true,
+            ["short"] = "Second line of the Two-Line Element set",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "name",
             ["req"] = true,
+            ["short"] = "Name of the satellite",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "satelliteId",
             ["req"] = true,
+            ["short"] = "NORAD catalog ID of the satellite",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "type",
+            ["short"] = "Resource type",
             ["type"] = "`$STRING`",
           },
         },
