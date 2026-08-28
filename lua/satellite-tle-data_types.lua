@@ -19,13 +19,11 @@
 ---@field id number
 
 ---@class TleListMatch
----@field date? string
----@field id? string
----@field line1? string
----@field line2? string
----@field name? string
----@field satelliteId? number
----@field type? string
+---@field page? number
+---@field page_size? number
+---@field search? string
+---@field sort? string
+---@field sort_dir? string
 
 local M = {}
 

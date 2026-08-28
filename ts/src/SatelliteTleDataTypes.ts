@@ -20,12 +20,10 @@ export interface TleLoadMatch {
 }
 
 export interface TleListMatch {
-  date?: string
-  id?: string
-  line1?: string
-  line2?: string
-  name?: string
-  satelliteId?: number
-  type?: string
+  page?: number
+  page_size?: number
+  search?: string
+  sort?: string
+  sort_dir?: string
 }
 

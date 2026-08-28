@@ -34,10 +34,8 @@ class TleLoadMatch(TypedDict):
 
 
 class TleListMatch(TypedDict, total=False):
-    date: str
-    id: str
-    line1: str
-    line2: str
-    name: str
-    satelliteId: int
-    type: str
+    page: int
+    page_size: int
+    search: str
+    sort: str
+    sort_dir: str

@@ -33,12 +33,10 @@ class TleLoadMatch
 /** Request payload for Tle#list. */
 class TleListMatch
 {
-    public ?string $date = null;
-    public ?string $id = null;
-    public ?string $line1 = null;
-    public ?string $line2 = null;
-    public ?string $name = null;
-    public ?int $satelliteId = null;
-    public ?string $type = null;
+    public ?int $page = null;
+    public ?int $page_size = null;
+    public ?string $search = null;
+    public ?string $sort = null;
+    public ?string $sort_dir = null;
 }
 

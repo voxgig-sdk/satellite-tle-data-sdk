@@ -52,34 +52,26 @@ TleLoadMatch = Struct.new(
 
 # Request payload for Tle#list.
 #
-# @!attribute [rw] date
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] line1
-#   @return [String, nil]
-#
-# @!attribute [rw] line2
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] satelliteId
+# @!attribute [rw] page
 #   @return [Integer, nil]
 #
-# @!attribute [rw] type
+# @!attribute [rw] page_size
+#   @return [Integer, nil]
+#
+# @!attribute [rw] search
+#   @return [String, nil]
+#
+# @!attribute [rw] sort
+#   @return [String, nil]
+#
+# @!attribute [rw] sort_dir
 #   @return [String, nil]
 TleListMatch = Struct.new(
-  :date,
-  :id,
-  :line1,
-  :line2,
-  :name,
-  :satelliteId,
-  :type,
+  :page,
+  :page_size,
+  :search,
+  :sort,
+  :sort_dir,
   keyword_init: true
 )
 

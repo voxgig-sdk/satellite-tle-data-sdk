@@ -30,13 +30,11 @@ type TleLoadMatch struct {
 
 // TleListMatch is the typed request payload for Tle.ListTyped.
 type TleListMatch struct {
-	Date *string `json:"date,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Line1 *string `json:"line1,omitempty"`
-	Line2 *string `json:"line2,omitempty"`
-	Name *string `json:"name,omitempty"`
-	SatelliteId *int `json:"satelliteId,omitempty"`
-	Type *string `json:"type,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PageSize *int `json:"page_size,omitempty"`
+	Search *string `json:"search,omitempty"`
+	Sort *string `json:"sort,omitempty"`
+	SortDir *string `json:"sort_dir,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the
