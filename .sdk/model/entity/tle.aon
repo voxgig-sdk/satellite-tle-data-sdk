@@ -6,12 +6,14 @@ main: kit: entity: tle: {
 
   fields: [
     {
+      format: "date-time"
       name: "date"
       req: true
       short: "Date and time of the TLE data"
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "id"
       req: false
       short: "Unique identifier URI for the TLE resource"
@@ -106,8 +108,10 @@ main: kit: entity: tle: {
           }
           method: "GET"
           orig: "/tle/"
-          parts: [
-            "tle"
+          segments: [
+            {
+              lit: "tle"
+            }
           ]
           select: {
             exist: [
@@ -143,15 +147,19 @@ main: kit: entity: tle: {
           }
           method: "GET"
           orig: "/tle/{satelliteId}"
-          parts: [
-            "tle"
-            "{id}"
-          ]
           rename: {
             param: {
               satelliteId: "id"
             }
           }
+          segments: [
+            {
+              lit: "tle"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

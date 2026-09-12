@@ -44,12 +44,14 @@ module SatelliteTleDataConfig
         "tle" => {
           "fields" => [
             {
+              "format" => "date-time",
               "name" => "date",
               "req" => true,
               "short" => "Date and time of the TLE data",
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "id",
               "short" => "Unique identifier URI for the TLE resource",
               "type" => "`$STRING`",
@@ -84,6 +86,10 @@ module SatelliteTleDataConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "tle",
           "op" => {
             "list" => {
@@ -133,8 +139,10 @@ module SatelliteTleDataConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/tle/",
-                  "parts" => [
-                    "tle",
+                  "segments" => [
+                    {
+                      "lit" => "tle",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -149,6 +157,9 @@ module SatelliteTleDataConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "tle",
+                  ],
                 },
               ],
             },
@@ -172,15 +183,19 @@ module SatelliteTleDataConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/tle/{satelliteId}",
-                  "parts" => [
-                    "tle",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "satelliteId" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "tle",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -190,6 +205,10 @@ module SatelliteTleDataConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "tle",
+                    "{id}",
+                  ],
                 },
               ],
             },

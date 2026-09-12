@@ -32,12 +32,14 @@ local function make_config()
       ["tle"] = {
         ["fields"] = {
           {
+            ["format"] = "date-time",
             ["name"] = "date",
             ["req"] = true,
             ["short"] = "Date and time of the TLE data",
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "id",
             ["short"] = "Unique identifier URI for the TLE resource",
             ["type"] = "`$STRING`",
@@ -71,6 +73,10 @@ local function make_config()
             ["short"] = "Resource type",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "tle",
         ["op"] = {
@@ -121,8 +127,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/tle/",
-                ["parts"] = {
-                  "tle",
+                ["segments"] = {
+                  {
+                    ["lit"] = "tle",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -136,6 +144,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "tle",
                 },
               },
             },
@@ -160,13 +171,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/tle/{satelliteId}",
-                ["parts"] = {
-                  "tle",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["satelliteId"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "tle",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -177,6 +192,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "tle",
+                  "{id}",
                 },
               },
             },

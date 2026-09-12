@@ -58,12 +58,14 @@ class SatelliteTleDataConfig
         'tle' => [
           'fields' => [
             [
+              'format' => 'date-time',
               'name' => 'date',
               'req' => true,
               'short' => 'Date and time of the TLE data',
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'uri',
               'name' => 'id',
               'short' => 'Unique identifier URI for the TLE resource',
               'type' => '`$STRING`',
@@ -97,6 +99,10 @@ class SatelliteTleDataConfig
               'short' => 'Resource type',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'tle',
           'op' => [
@@ -147,8 +153,10 @@ class SatelliteTleDataConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/tle/',
-                  'parts' => [
-                    'tle',
+                  'segments' => [
+                    [
+                      'lit' => 'tle',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -162,6 +170,9 @@ class SatelliteTleDataConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'tle',
                   ],
                 ],
               ],
@@ -186,13 +197,17 @@ class SatelliteTleDataConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/tle/{satelliteId}',
-                  'parts' => [
-                    'tle',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'satelliteId' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'tle',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -203,6 +218,10 @@ class SatelliteTleDataConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'tle',
+                    '{id}',
                   ],
                 ],
               ],
