@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { SatelliteTleDataSDK } from '@voxgig-sdk/satellite-tle-data'
+import { SatelliteTleDataSDK } from '@voxgig-sdk/satellite-tle-data-sdk'
 
 const client = new SatelliteTleDataSDK()
 ```
@@ -437,7 +437,7 @@ satellite-tle-data/
 Import the SDK from the package root:
 
 ```ts
-import { SatelliteTleDataSDK } from '@voxgig-sdk/satellite-tle-data'
+import { SatelliteTleDataSDK } from '@voxgig-sdk/satellite-tle-data-sdk'
 ```
 
 ### Entity state

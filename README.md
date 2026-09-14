@@ -105,7 +105,7 @@ local results, err = client:Tle():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/satellite-tle-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/satellite-tle-data-sdk/releases) |
+| TypeScript | `@voxgig-sdk/satellite-tle-data-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/satellite-tle-data-sdk/releases) |
 | Python | `voxgig-sdk-satellite-tle-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/satellite-tle-data-sdk/releases) |
 | PHP | `voxgig-sdk/satellite-tle-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/satellite-tle-data-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/satellite-tle-data-sdk/go` | `go get github.com/voxgig-sdk/satellite-tle-data-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Tle():list()
 ### TypeScript
 
 ```ts
-import { SatelliteTleDataSDK } from '@voxgig-sdk/satellite-tle-data'
+import { SatelliteTleDataSDK } from '@voxgig-sdk/satellite-tle-data-sdk'
 
 const client = new SatelliteTleDataSDK()
 

@@ -1,5 +1,5 @@
 {
-  "name": "@voxgig-sdk/satellite-tle-data",
+  "name": "@voxgig-sdk/satellite-tle-data-sdk",
   "version": "0.0.1",
   "description": "Unofficial generated TypeScript SDK for the Satellite TLE Data public API. Not affiliated with or endorsed by the upstream API provider.",
   "keywords": [
