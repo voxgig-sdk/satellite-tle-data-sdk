@@ -1,12 +1,18 @@
 # SatelliteTleData SDK feature factory
 
 from satellitetledata_sdk.feature.base_feature import SatelliteTleDataBaseFeature
+from satellitetledata_sdk.feature.ratelimit_feature import SatelliteTleDataRatelimitFeature
+from satellitetledata_sdk.feature.retry_feature import SatelliteTleDataRetryFeature
 from satellitetledata_sdk.feature.test_feature import SatelliteTleDataTestFeature
+from satellitetledata_sdk.feature.timeout_feature import SatelliteTleDataTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: SatelliteTleDataBaseFeature(),
+    "ratelimit": lambda: SatelliteTleDataRatelimitFeature(),
+    "retry": lambda: SatelliteTleDataRetryFeature(),
     "test": lambda: SatelliteTleDataTestFeature(),
+    "timeout": lambda: SatelliteTleDataTimeoutFeature(),
 }
 
 
