@@ -1,0 +1,44 @@
+# BasicTleFlow
+
+main: kit: flow: BasicTleFlow:
+{
+  entity: "tle",
+  kind: "basic",
+  name: "BasicTleFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "tle_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "tle_ref01",
+        srcdatavar: "tle_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "tle01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-tle_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicTleFlow"
+}

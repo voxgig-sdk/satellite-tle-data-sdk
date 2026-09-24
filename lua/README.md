@@ -43,7 +43,7 @@ local tles, err = client:Tle():list()
 if err then error(err) end
 
 for _, item in ipairs(tles) do
-  print(item["id"], item["date"])
+  print(item["id"])
 end
 ```
 

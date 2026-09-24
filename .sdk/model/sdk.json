@@ -24,65 +24,138 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "tle": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "date",
-              "req": true,
-              "short": "Date and time of the TLE data",
-              "type": "`$STRING`"
+          "fields": {
+            "date": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Date",
+              "n": "date",
+              "r": true,
+              "sh": "Date and time of the TLE data",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "uri",
-              "name": "id",
-              "req": false,
-              "short": "Unique identifier URI for the TLE resource",
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "fo": "uri",
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Unique identifier URI for the TLE resource",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "line1",
-              "req": true,
-              "short": "First line of the Two-Line Element set",
-              "type": "`$STRING`"
+            "line1": {
+              "a": true,
+              "h": "Line1",
+              "n": "line1",
+              "r": true,
+              "sh": "First line of the Two-Line Element set",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "line2",
-              "req": true,
-              "short": "Second line of the Two-Line Element set",
-              "type": "`$STRING`"
+            "line2": {
+              "a": true,
+              "h": "Line2",
+              "n": "line2",
+              "r": true,
+              "sh": "Second line of the Two-Line Element set",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": true,
-              "short": "Name of the satellite",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": true,
+              "sh": "Name of the satellite",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "satelliteId",
-              "req": true,
-              "short": "NORAD catalog ID of the satellite",
-              "type": "`$INTEGER`"
+            "satelliteId": {
+              "a": true,
+              "h": "Satellite Id",
+              "n": "satelliteId",
+              "r": true,
+              "sh": "NORAD catalog ID of the satellite",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "type",
-              "req": false,
-              "short": "Resource type",
-              "type": "`$STRING`"
+            "type": {
+              "a": true,
+              "h": "Type",
+              "n": "type",
+              "r": false,
+              "sh": "Resource type",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -94,71 +167,65 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /tle/",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": 1,
-                        "kind": "query",
-                        "name": "page",
-                        "orig": "page",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 1,
+                        "k": "query",
+                        "n": "page",
+                        "or": "page",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "example": 20,
-                        "kind": "query",
-                        "name": "page_size",
-                        "orig": "page_size",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 20,
+                        "k": "query",
+                        "n": "page_size",
+                        "or": "page_size",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "example": "*",
-                        "kind": "query",
-                        "name": "search",
-                        "orig": "search",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "*",
+                        "k": "query",
+                        "n": "search",
+                        "or": "search",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "popularity",
-                        "kind": "query",
-                        "name": "sort",
-                        "orig": "sort",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "popularity",
+                        "k": "query",
+                        "n": "sort",
+                        "or": "sort",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "desc",
-                        "kind": "query",
-                        "name": "sort_dir",
-                        "orig": "sort_dir",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "desc",
+                        "k": "query",
+                        "n": "sort_dir",
+                        "or": "sort_dir",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /tle/",
-                    "json": "{\"operationId\":\"getTLEList\",\"parameters\":[{\"description\":\"Search query to filter satellites by name or ID. Use '*' for all satellites.\",\"in\":\"query\",\"name\":\"search\",\"required\":false,\"schema\":{\"default\":\"*\",\"type\":\"string\"}},{\"description\":\"Field to sort results by\",\"in\":\"query\",\"name\":\"sort\",\"required\":false,\"schema\":{\"default\":\"popularity\",\"enum\":[\"popularity\",\"name\",\"date\",\"satelliteId\"],\"type\":\"string\"}},{\"description\":\"Sort direction\",\"in\":\"query\",\"name\":\"sort-dir\",\"required\":false,\"schema\":{\"default\":\"desc\",\"enum\":[\"asc\",\"desc\"],\"type\":\"string\"}},{\"description\":\"Page number for pagination\",\"in\":\"query\",\"name\":\"page\",\"required\":false,\"schema\":{\"default\":1,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Number of items per page\",\"in\":\"query\",\"name\":\"page-size\",\"required\":false,\"schema\":{\"default\":20,\"maximum\":100,\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"@context\":{\"description\":\"JSON-LD context\",\"example\":\"https://www.w3.org/ns/hydra/context.jsonld\",\"format\":\"uri\",\"type\":\"string\"},\"@id\":{\"description\":\"Identifier for the collection\",\"example\":\"https://tle.ivanstanojevic.me/api/tle/\",\"format\":\"uri\",\"type\":\"string\"},\"@type\":{\"description\":\"Collection type\",\"example\":\"Tle[]\",\"type\":\"string\"},\"member\":{\"description\":\"Array of TLE objects\",\"items\":{\"properties\":{\"@id\":{\"description\":\"Unique identifier URI for the TLE resource\",\"example\":\"https://tle.ivanstanojevic.me/api/tle/25544\",\"format\":\"uri\",\"type\":\"string\"},\"@type\":{\"description\":\"Resource type\",\"example\":\"Tle\",\"type\":\"string\"},\"date\":{\"description\":\"Date and time of the TLE data\",\"example\":\"2026-02-15T13:40:14+00:00\",\"format\":\"date-time\",\"type\":\"string\"},\"line1\":{\"description\":\"First line of the Two-Line Element set\",\"example\":\"1 25544U 98067A 26046.56961129 .00012237 00000+0 23255-3 0 9991\",\"type\":\"string\"},\"line2\":{\"description\":\"Second line of the Two-Line Element set\",\"example\":\"2 25544 51.6318 181.6982 0010992 101.7612 258.4610 15.48625638552905\",\"type\":\"string\"},\"name\":{\"description\":\"Name of the satellite\",\"example\":\"ISS (ZARYA)\",\"type\":\"string\"},\"satelliteId\":{\"description\":\"NORAD catalog ID of the satellite\",\"example\":25544,\"type\":\"integer\"}},\"required\":[\"satelliteId\",\"name\",\"date\",\"line1\",\"line2\"],\"type\":\"object\"},\"type\":\"array\"},\"parameters\":{\"description\":\"Query parameters used for this request\",\"properties\":{\"page\":{\"example\":1,\"type\":\"integer\"},\"page-size\":{\"example\":20,\"type\":\"integer\"},\"search\":{\"example\":\"*\",\"type\":\"string\"},\"sort\":{\"example\":\"popularity\",\"type\":\"string\"},\"sort-dir\":{\"example\":\"desc\",\"type\":\"string\"}},\"type\":\"object\"},\"totalItems\":{\"description\":\"Total number of TLE entries available\",\"example\":23381,\"type\":\"integer\"},\"view\":{\"description\":\"Pagination view information\",\"properties\":{\"@id\":{\"description\":\"Current page URI\",\"example\":\"https://tle.ivanstanojevic.me/api/tle/?page=1\",\"format\":\"uri\",\"type\":\"string\"},\"@type\":{\"example\":\"PartialCollectionView\",\"type\":\"string\"},\"first\":{\"description\":\"URI of the first page\",\"example\":\"https://tle.ivanstanojevic.me/api/tle/?page=1\",\"format\":\"uri\",\"type\":\"string\"},\"last\":{\"description\":\"URI of the last page\",\"example\":\"https://tle.ivanstanojevic.me/api/tle/?page=1170\",\"format\":\"uri\",\"type\":\"string\"},\"next\":{\"description\":\"URI of the next page\",\"example\":\"https://tle.ivanstanojevic.me/api/tle/?page=2\",\"format\":\"uri\",\"type\":\"string\"},\"previous\":{\"description\":\"URI of the previous page (if applicable)\",\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"}},\"required\":[\"totalItems\",\"member\"],\"type\":\"object\"}}},\"description\":\"Successful response with TLE data\"},\"400\":{\"description\":\"Bad request - invalid parameters\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/tle/",
-                  "segments": [
-                    {
-                      "lit": "tle"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/tle/",
+                  "q": {
                     "exist": [
                       "page",
                       "page_size",
@@ -167,7 +234,13 @@
                       "sort_dir"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "tle"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -179,35 +252,39 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /tle/{satelliteId}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "example": 25544,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "satellite_id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 25544,
+                        "k": "param",
+                        "n": "id",
+                        "or": "satellite_id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /tle/{satelliteId}",
-                    "json": "{\"operationId\":\"getTLEBySatelliteId\",\"parameters\":[{\"description\":\"NORAD catalog ID of the satellite\",\"in\":\"path\",\"name\":\"satelliteId\",\"required\":true,\"schema\":{\"example\":25544,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"@id\":{\"description\":\"Unique identifier URI for the TLE resource\",\"example\":\"https://tle.ivanstanojevic.me/api/tle/25544\",\"format\":\"uri\",\"type\":\"string\"},\"@type\":{\"description\":\"Resource type\",\"example\":\"Tle\",\"type\":\"string\"},\"date\":{\"description\":\"Date and time of the TLE data\",\"example\":\"2026-02-15T13:40:14+00:00\",\"format\":\"date-time\",\"type\":\"string\"},\"line1\":{\"description\":\"First line of the Two-Line Element set\",\"example\":\"1 25544U 98067A 26046.56961129 .00012237 00000+0 23255-3 0 9991\",\"type\":\"string\"},\"line2\":{\"description\":\"Second line of the Two-Line Element set\",\"example\":\"2 25544 51.6318 181.6982 0010992 101.7612 258.4610 15.48625638552905\",\"type\":\"string\"},\"name\":{\"description\":\"Name of the satellite\",\"example\":\"ISS (ZARYA)\",\"type\":\"string\"},\"satelliteId\":{\"description\":\"NORAD catalog ID of the satellite\",\"example\":25544,\"type\":\"integer\"}},\"required\":[\"satelliteId\",\"name\",\"date\",\"line1\",\"line2\"],\"type\":\"object\"}}},\"description\":\"Successful response with TLE data for the specified satellite\"},\"404\":{\"description\":\"Satellite not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/tle/{satelliteId}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/tle/{satelliteId}",
-                  "rename": {
+                  "r": {
                     "param": {
                       "satelliteId": "id"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "tle"
                     },
@@ -215,12 +292,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -649,13 +721,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -665,19 +737,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "tle_ref01",
                 "srcdatavar": "tle_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "tle01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {

@@ -90,46 +90,53 @@ func MakeConfig() map[string]any {
 			"tle": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"format": "date-time",
 						"name": "date",
+						"title": "Date",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Date and time of the TLE data",
-						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "id",
-						"short": "Unique identifier URI for the TLE resource",
+						"title": "Id",
 						"type": "`$STRING`",
+						"short": "Unique identifier URI for the TLE resource",
+						"format": "uri",
 					},
 					map[string]any{
 						"name": "line1",
+						"title": "Line1",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "First line of the Two-Line Element set",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "line2",
+						"title": "Line2",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Second line of the Two-Line Element set",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Name of the satellite",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "satelliteId",
+						"title": "Satellite Id",
+						"type": "`$INTEGER`",
 						"req": true,
 						"short": "NORAD catalog ID of the satellite",
-						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "type",
-						"short": "Resource type",
+						"title": "Type",
 						"type": "`$STRING`",
+						"short": "Resource type",
 					},
 				},
 				"id": map[string]any{
@@ -143,51 +150,59 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "page",
-											"orig": "page",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": 20,
-											"kind": "query",
-											"name": "page_size",
-											"orig": "page_size",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": "*",
-											"kind": "query",
-											"name": "search",
-											"orig": "search",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "popularity",
-											"kind": "query",
-											"name": "sort",
-											"orig": "sort",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "desc",
-											"kind": "query",
-											"name": "sort_dir",
-											"orig": "sort_dir",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/tle/",
 								"segments": []any{
 									map[string]any{
 										"lit": "tle",
+									},
+								},
+								"parts": []any{
+									"tle",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "page",
+											"orig": "page",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+										map[string]any{
+											"name": "page_size",
+											"orig": "page_size",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 20,
+										},
+										map[string]any{
+											"name": "search",
+											"orig": "search",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "*",
+										},
+										map[string]any{
+											"name": "sort",
+											"orig": "sort",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "popularity",
+										},
+										map[string]any{
+											"name": "sort_dir",
+											"orig": "sort_dir",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "desc",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -199,13 +214,6 @@ func MakeConfig() map[string]any {
 										"sort_dir",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"tle",
-								},
 							},
 						},
 					},
@@ -214,26 +222,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": 25544,
-											"kind": "param",
-											"name": "id",
-											"orig": "satellite_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/tle/{satelliteId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"satelliteId": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "tle",
@@ -242,18 +233,35 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
+								"parts": []any{
+									"tle",
+									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"satelliteId": "id",
 									},
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"tle",
-									"{id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "satellite_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": 25544,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},

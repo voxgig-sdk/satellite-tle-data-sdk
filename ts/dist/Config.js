@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -113,46 +106,53 @@ class Config {
         "tle": {
             "fields": [
                 {
-                    "format": "date-time",
                     "name": "date",
+                    "title": "Date",
+                    "type": "`$STRING`",
                     "req": true,
                     "short": "Date and time of the TLE data",
-                    "type": "`$STRING`"
+                    "format": "date-time"
                 },
                 {
-                    "format": "uri",
                     "name": "id",
+                    "title": "Id",
+                    "type": "`$STRING`",
                     "short": "Unique identifier URI for the TLE resource",
-                    "type": "`$STRING`"
+                    "format": "uri"
                 },
                 {
                     "name": "line1",
+                    "title": "Line1",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "First line of the Two-Line Element set",
-                    "type": "`$STRING`"
+                    "short": "First line of the Two-Line Element set"
                 },
                 {
                     "name": "line2",
+                    "title": "Line2",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "Second line of the Two-Line Element set",
-                    "type": "`$STRING`"
+                    "short": "Second line of the Two-Line Element set"
                 },
                 {
                     "name": "name",
+                    "title": "Name",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "Name of the satellite",
-                    "type": "`$STRING`"
+                    "short": "Name of the satellite"
                 },
                 {
                     "name": "satelliteId",
+                    "title": "Satellite Id",
+                    "type": "`$INTEGER`",
                     "req": true,
-                    "short": "NORAD catalog ID of the satellite",
-                    "type": "`$INTEGER`"
+                    "short": "NORAD catalog ID of the satellite"
                 },
                 {
                     "name": "type",
-                    "short": "Resource type",
-                    "type": "`$STRING`"
+                    "title": "Type",
+                    "type": "`$STRING`",
+                    "short": "Resource type"
                 }
             ],
             "id": {
@@ -166,45 +166,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": 1,
-                                        "kind": "query",
-                                        "name": "page",
-                                        "orig": "page",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": 20,
-                                        "kind": "query",
-                                        "name": "page_size",
-                                        "orig": "page_size",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": "*",
-                                        "kind": "query",
-                                        "name": "search",
-                                        "orig": "search",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": "popularity",
-                                        "kind": "query",
-                                        "name": "sort",
-                                        "orig": "sort",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": "desc",
-                                        "kind": "query",
-                                        "name": "sort_dir",
-                                        "orig": "sort_dir",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/tle/",
@@ -213,6 +174,53 @@ class Config {
                                     "lit": "tle"
                                 }
                             ],
+                            "parts": [
+                                "tle"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "page",
+                                        "orig": "page",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 1
+                                    },
+                                    {
+                                        "name": "page_size",
+                                        "orig": "page_size",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 20
+                                    },
+                                    {
+                                        "name": "search",
+                                        "orig": "search",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "*"
+                                    },
+                                    {
+                                        "name": "sort",
+                                        "orig": "sort",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "popularity"
+                                    },
+                                    {
+                                        "name": "sort_dir",
+                                        "orig": "sort_dir",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "desc"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "page",
@@ -221,14 +229,7 @@ class Config {
                                     "sort",
                                     "sort_dir"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "tle"
-                            ]
+                            }
                         }
                     ]
                 },
@@ -237,26 +238,9 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "example": 25544,
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "satellite_id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/tle/{satelliteId}",
-                            "rename": {
-                                "param": {
-                                    "satelliteId": "id"
-                                }
-                            },
                             "segments": [
                                 {
                                     "lit": "tle"
@@ -265,19 +249,36 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
+                            "parts": [
+                                "tle",
+                                "{id}"
+                            ],
+                            "rename": {
+                                "param": {
+                                    "satelliteId": "id"
+                                }
                             },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "tle",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "satellite_id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true,
+                                        "example": 25544
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }

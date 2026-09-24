@@ -98,46 +98,53 @@ module SatelliteTleDataConfig
         "tle" => {
           "fields" => [
             {
-              "format" => "date-time",
               "name" => "date",
+              "title" => "Date",
+              "type" => "`$STRING`",
               "req" => true,
               "short" => "Date and time of the TLE data",
-              "type" => "`$STRING`",
+              "format" => "date-time",
             },
             {
-              "format" => "uri",
               "name" => "id",
-              "short" => "Unique identifier URI for the TLE resource",
+              "title" => "Id",
               "type" => "`$STRING`",
+              "short" => "Unique identifier URI for the TLE resource",
+              "format" => "uri",
             },
             {
               "name" => "line1",
+              "title" => "Line1",
+              "type" => "`$STRING`",
               "req" => true,
               "short" => "First line of the Two-Line Element set",
-              "type" => "`$STRING`",
             },
             {
               "name" => "line2",
+              "title" => "Line2",
+              "type" => "`$STRING`",
               "req" => true,
               "short" => "Second line of the Two-Line Element set",
-              "type" => "`$STRING`",
             },
             {
               "name" => "name",
+              "title" => "Name",
+              "type" => "`$STRING`",
               "req" => true,
               "short" => "Name of the satellite",
-              "type" => "`$STRING`",
             },
             {
               "name" => "satelliteId",
+              "title" => "Satellite Id",
+              "type" => "`$INTEGER`",
               "req" => true,
               "short" => "NORAD catalog ID of the satellite",
-              "type" => "`$INTEGER`",
             },
             {
               "name" => "type",
-              "short" => "Resource type",
+              "title" => "Type",
               "type" => "`$STRING`",
+              "short" => "Resource type",
             },
           ],
           "id" => {
@@ -151,45 +158,6 @@ module SatelliteTleDataConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "example" => 1,
-                        "kind" => "query",
-                        "name" => "page",
-                        "orig" => "page",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "example" => 20,
-                        "kind" => "query",
-                        "name" => "page_size",
-                        "orig" => "page_size",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "example" => "*",
-                        "kind" => "query",
-                        "name" => "search",
-                        "orig" => "search",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => "popularity",
-                        "kind" => "query",
-                        "name" => "sort",
-                        "orig" => "sort",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => "desc",
-                        "kind" => "query",
-                        "name" => "sort_dir",
-                        "orig" => "sort_dir",
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/tle/",
@@ -198,6 +166,53 @@ module SatelliteTleDataConfig
                       "lit" => "tle",
                     },
                   ],
+                  "parts" => [
+                    "tle",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "page",
+                        "orig" => "page",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 1,
+                      },
+                      {
+                        "name" => "page_size",
+                        "orig" => "page_size",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 20,
+                      },
+                      {
+                        "name" => "search",
+                        "orig" => "search",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "example" => "*",
+                      },
+                      {
+                        "name" => "sort",
+                        "orig" => "sort",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "example" => "popularity",
+                      },
+                      {
+                        "name" => "sort_dir",
+                        "orig" => "sort_dir",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "example" => "desc",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "page",
@@ -207,13 +222,6 @@ module SatelliteTleDataConfig
                       "sort_dir",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "tle",
-                  ],
                 },
               ],
             },
@@ -222,26 +230,9 @@ module SatelliteTleDataConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "example" => 25544,
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "satellite_id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/tle/{satelliteId}",
-                  "rename" => {
-                    "param" => {
-                      "satelliteId" => "id",
-                    },
-                  },
                   "segments" => [
                     {
                       "lit" => "tle",
@@ -250,19 +241,36 @@ module SatelliteTleDataConfig
                       "var" => "id",
                     },
                   ],
-                  "select" => {
-                    "exist" => [
-                      "id",
-                    ],
+                  "parts" => [
+                    "tle",
+                    "{id}",
+                  ],
+                  "rename" => {
+                    "param" => {
+                      "satelliteId" => "id",
+                    },
                   },
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "parts" => [
-                    "tle",
-                    "{id}",
-                  ],
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "satellite_id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                        "example" => 25544,
+                      },
+                    ],
+                  },
+                  "select" => {
+                    "exist" => [
+                      "id",
+                    ],
+                  },
                 },
               ],
             },

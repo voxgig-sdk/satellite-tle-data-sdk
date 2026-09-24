@@ -1,0 +1,196 @@
+# Entity: tle
+
+main: kit: entity: tle: {
+
+  alias: field: {}
+
+  fields: {
+    date: {
+      fo: "date-time"
+      h: "Date"
+      n: "date"
+      r: true
+      sh: "Date and time of the TLE data"
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "uri"
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Unique identifier URI for the TLE resource"
+      t: "`$STRING`"
+    }
+    line1: {
+      h: "Line1"
+      n: "line1"
+      r: true
+      sh: "First line of the Two-Line Element set"
+      t: "`$STRING`"
+    }
+    line2: {
+      h: "Line2"
+      n: "line2"
+      r: true
+      sh: "Second line of the Two-Line Element set"
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "Name of the satellite"
+      t: "`$STRING`"
+    }
+    satelliteId: {
+      h: "Satellite Id"
+      n: "satelliteId"
+      r: true
+      sh: "NORAD catalog ID of the satellite"
+      t: "`$INTEGER`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "Resource type"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "tle"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /tle/"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "*"
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "popularity"
+                k: "query"
+                n: "sort"
+                or: "sort"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "desc"
+                k: "query"
+                n: "sort_dir"
+                or: "sort_dir"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/tle/"
+          q: {
+            exist: [
+              "page"
+              "page_size"
+              "search"
+              "sort"
+              "sort_dir"
+            ]
+          }
+          s: [
+            {
+              lit: "tle"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /tle/{satelliteId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 25544
+                k: "param"
+                n: "id"
+                or: "satellite_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/tle/{satelliteId}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              satelliteId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "tle"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
