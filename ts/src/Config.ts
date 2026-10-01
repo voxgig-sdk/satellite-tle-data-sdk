@@ -218,7 +218,7 @@ class Config {
                   },
                   {
                     "name": "page_size",
-                    "orig": "page_size",
+                    "orig": "page-size",
                     "type": "`$INTEGER`",
                     "kind": "query",
                     "example": 20
@@ -239,7 +239,7 @@ class Config {
                   },
                   {
                     "name": "sort_dir",
-                    "orig": "sort_dir",
+                    "orig": "sort-dir",
                     "type": "`$STRING`",
                     "kind": "query",
                     "example": "desc"
@@ -291,7 +291,7 @@ class Config {
                 "params": [
                   {
                     "name": "id",
-                    "orig": "satellite_id",
+                    "orig": "satelliteId",
                     "type": "`$INTEGER`",
                     "kind": "param",
                     "reqd": true,

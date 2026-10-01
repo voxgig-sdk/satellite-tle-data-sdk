@@ -189,7 +189,7 @@
                         "ex": 20,
                         "k": "query",
                         "n": "page_size",
-                        "or": "page_size",
+                        "or": "page-size",
                         "r": false,
                         "t": "`$INTEGER`"
                       },
@@ -216,7 +216,7 @@
                         "ex": "desc",
                         "k": "query",
                         "n": "sort_dir",
-                        "or": "sort_dir",
+                        "or": "sort-dir",
                         "r": false,
                         "t": "`$STRING`"
                       }
@@ -265,7 +265,7 @@
                         "ex": 25544,
                         "k": "param",
                         "n": "id",
-                        "or": "satellite_id",
+                        "or": "satelliteId",
                         "r": true,
                         "t": "`$INTEGER`"
                       }
@@ -798,7 +798,12 @@
         },
         "base": "http://localhost:8000",
         "clean": {
-          "keys": "key,token,id"
+          "active": true,
+          "hint": "0",
+          "keys": "key,secret,token,password,passwd,authorization,cookie,credential,signature",
+          "mask": "[redacted]",
+          "min": "4",
+          "values": ""
         },
         "entity": {
           "`$CHILD`": {

@@ -173,7 +173,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "page_size",
-                      ["orig"] = "page_size",
+                      ["orig"] = "page-size",
                       ["type"] = "`$INTEGER`",
                       ["kind"] = "query",
                       ["example"] = 20,
@@ -194,7 +194,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "sort_dir",
-                      ["orig"] = "sort_dir",
+                      ["orig"] = "sort-dir",
                       ["type"] = "`$STRING`",
                       ["kind"] = "query",
                       ["example"] = "desc",
@@ -246,7 +246,7 @@ local function make_config()
                   ["params"] = {
                     {
                       ["name"] = "id",
-                      ["orig"] = "satellite_id",
+                      ["orig"] = "satelliteId",
                       ["type"] = "`$INTEGER`",
                       ["kind"] = "param",
                       ["reqd"] = true,

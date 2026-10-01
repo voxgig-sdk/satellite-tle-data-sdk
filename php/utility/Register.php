@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 SatelliteTleDataUtility::setRegistrar(function (SatelliteTleDataUtility $u): void {
     $u->clean = [SatelliteTleDataClean::class, 'call'];
+    $u->clean_add = [SatelliteTleDataClean::class, 'add'];
+    $u->clean_explain = [SatelliteTleDataDone::class, 'clean_explain'];
     $u->done = [SatelliteTleDataDone::class, 'call'];
     $u->make_error = [SatelliteTleDataMakeError::class, 'call'];
     $u->feature_add = [SatelliteTleDataFeatureAdd::class, 'call'];

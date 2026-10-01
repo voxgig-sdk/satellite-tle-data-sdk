@@ -177,7 +177,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "page_size",
-											"orig": "page_size",
+											"orig": "page-size",
 											"type": "`$INTEGER`",
 											"kind": "query",
 											"example": 20,
@@ -198,7 +198,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "sort_dir",
-											"orig": "sort_dir",
+											"orig": "sort-dir",
 											"type": "`$STRING`",
 											"kind": "query",
 											"example": "desc",
@@ -250,7 +250,7 @@ func MakeConfig() map[string]any {
 									"params": []any{
 										map[string]any{
 											"name": "id",
-											"orig": "satellite_id",
+											"orig": "satelliteId",
 											"type": "`$INTEGER`",
 											"kind": "param",
 											"reqd": true,

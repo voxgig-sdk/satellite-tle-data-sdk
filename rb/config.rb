@@ -185,7 +185,7 @@ module SatelliteTleDataConfig
                       },
                       {
                         "name" => "page_size",
-                        "orig" => "page_size",
+                        "orig" => "page-size",
                         "type" => "`$INTEGER`",
                         "kind" => "query",
                         "example" => 20,
@@ -206,7 +206,7 @@ module SatelliteTleDataConfig
                       },
                       {
                         "name" => "sort_dir",
-                        "orig" => "sort_dir",
+                        "orig" => "sort-dir",
                         "type" => "`$STRING`",
                         "kind" => "query",
                         "example" => "desc",
@@ -258,7 +258,7 @@ module SatelliteTleDataConfig
                     "params" => [
                       {
                         "name" => "id",
-                        "orig" => "satellite_id",
+                        "orig" => "satelliteId",
                         "type" => "`$INTEGER`",
                         "kind" => "param",
                         "reqd" => true,

@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 SatelliteTleDataUtility.registrar = ->(u) {
   u.clean = SatelliteTleDataUtilities::Clean
+  u.clean_add = SatelliteTleDataUtilities::CleanAdd
+  u.clean_explain = SatelliteTleDataUtilities::CleanExplain
   u.done = SatelliteTleDataUtilities::Done
   u.make_error = SatelliteTleDataUtilities::MakeError
   u.feature_add = SatelliteTleDataUtilities::FeatureAdd

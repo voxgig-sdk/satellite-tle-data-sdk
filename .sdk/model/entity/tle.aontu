@@ -88,7 +88,7 @@ main: kit: entity: tle: {
                 ex: 20
                 k: "query"
                 n: "page_size"
-                or: "page_size"
+                or: "page-size"
                 r: false
                 t: "`$INTEGER`"
               }
@@ -112,7 +112,7 @@ main: kit: entity: tle: {
                 ex: "desc"
                 k: "query"
                 n: "sort_dir"
-                or: "sort_dir"
+                or: "sort-dir"
                 r: false
                 t: "`$STRING`"
               }
@@ -156,7 +156,7 @@ main: kit: entity: tle: {
                 ex: 25544
                 k: "param"
                 n: "id"
-                or: "satellite_id"
+                or: "satelliteId"
                 r: true
                 t: "`$INTEGER`"
               }
