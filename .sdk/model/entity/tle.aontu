@@ -120,14 +120,9 @@ main: kit: entity: tle: {
           }
           m: "GET"
           o: "/tle/"
-          q: {
-            exist: [
-              "page"
-              "page_size"
-              "search"
-              "sort"
-              "sort_dir"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -173,6 +168,10 @@ main: kit: entity: tle: {
             param: {
               satelliteId: "id"
             }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

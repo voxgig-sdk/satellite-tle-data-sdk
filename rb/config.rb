@@ -79,6 +79,7 @@ module SatelliteTleDataConfig
           },
           "optspec" => {
             "clearTimer" => "`$FUNCTION`",
+            "now" => "`$FUNCTION`",
             "setTimer" => "`$FUNCTION`",
           },
           "strict" => false,
@@ -213,14 +214,10 @@ module SatelliteTleDataConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "page",
-                      "page_size",
-                      "search",
-                      "sort",
-                      "sort_dir",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -270,6 +267,10 @@ module SatelliteTleDataConfig
                     "exist" => [
                       "id",
                     ],
+                  },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],

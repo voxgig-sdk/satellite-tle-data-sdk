@@ -93,6 +93,7 @@ class SatelliteTleDataConfig
           ],
           'optspec' => [
             'clearTimer' => '`$FUNCTION`',
+            'now' => '`$FUNCTION`',
             'setTimer' => '`$FUNCTION`',
           ],
           'strict' => false,
@@ -227,14 +228,10 @@ class SatelliteTleDataConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'page',
-                      'page_size',
-                      'search',
-                      'sort',
-                      'sort_dir',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -284,6 +281,10 @@ class SatelliteTleDataConfig
                     'exist' => [
                       'id',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
